@@ -1,0 +1,79 @@
+.navbar {
+  background-color: #00548F;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.navbar img {
+  margin-right: 10px;
+  height: 30px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.user-photo {
+  border-radius: 50%;
+  margin-right: 50px;
+  height: 40px;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name,
+.user-permission {
+  margin: 0;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  height: 30px;
+}
+.background-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  width: 100%;
+  background-image: url('/assets/backgroundLogin.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 1); /* Fondo blanco */
+  z-index: 1000; /* Asegura que el overlay esté por encima del contenido */
+  display: none;
+}
+
+.background-login.active-menu .menu-overlay {
+  display: block;
+}
+

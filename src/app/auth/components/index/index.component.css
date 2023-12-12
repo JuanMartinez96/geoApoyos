@@ -1,0 +1,27 @@
+/* Estilos de el background */
+.component-container {
+  display: flex;
+  flex-direction: column; /* Cambiado a columna para apilar elementos verticalmente */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  min-height: 100vh; /* 100% del viewport height */
+  width: 100%;
+  background-image: url('/assets/geoApoyos.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Estilos de el logo */
+.component-logo {
+  height: 500px;
+  width: 500px;
+  background-image: url('/assets/logoGeoApoyos.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: auto;
+}
+
+button {
+  margin-top: 20px; /* Ajusta el margen según sea necesario */
+}

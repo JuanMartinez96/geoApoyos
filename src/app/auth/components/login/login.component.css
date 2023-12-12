@@ -1,0 +1,142 @@
+.navbar {
+  background-color: #00548F;
+  padding: 20px;
+  color: white;
+  height: 30px;
+}
+
+.background-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  width: 100%;
+  background-image: url('/assets/backgroundLogin.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden; /* Asegúrate de aplicar overflow: hidden; también aquí */
+}
+
+.container {
+  text-align: center;
+}
+
+.form {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  height: 500px;
+  width: 380px;
+  margin-bottom: 20px; /* Ajusta el margen superior según tus preferencias */
+}
+
+.logo {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.icon-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-left: 40px; /* Espacio adicional para el ícono y el placeholder */
+}
+
+#email {
+  background-image: url('/assets/mail.png'); /* Imagen del sobre para el primer input */
+  background-size: 20px; /* Ajusta el tamaño del ícono según sea necesario */
+  background-position: 10px center; /* Ajusta la posición del ícono */
+  background-repeat: no-repeat;
+}
+
+#password {
+  background-image: url('/assets/llave.png'); /* Imagen de la llave para el segundo input */
+  background-size: 20px; /* Ajusta el tamaño del ícono según sea necesario */
+  background-position: 10px center; /* Ajusta la posición del ícono */
+  background-repeat: no-repeat;
+}
+
+.forgot-password,
+.recover {
+  font-family: 'Helvetica', sans-serif;
+  margin-top: 10px; /* Ajusta el margen superior según tus preferencias */
+}
+
+.remember-me {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 45px;
+}
+
+.remember-me label {
+  margin-right: 10px;
+  color: #7E7E7E;
+  font-family: Helvetica;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.button-container {
+  margin-top: 10px;
+}
+
+.login-button {
+  background-color: #00548F; /* Color azul */
+  color: white;
+  padding: 12px 24px; /* Ajusta el tamaño del botón según sea necesario */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block; /* Hace que el botón ocupe el ancho completo disponible */
+  width: 350px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2{
+  color: #1E91E2;
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+h3{
+  color: #7E7E7E;
+  font-family: Helvetica;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+h4{
+  color: #F90;
+  font-family: Helvetica;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+}

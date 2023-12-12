@@ -1,0 +1,21 @@
+<nav class="navbar">
+  <div class="left-section">
+    <img src="/assets/navBarFrame.png" alt="Logo">
+  </div>
+  <div class="right-section">
+    <div class="user-info">
+      <img src="/assets/user-photo.jpg" alt="User Photo" class="user-photo">
+      <div class="user-details">
+        <p class="user-name">Nombre del Usuario</p>
+        <p class="user-permission">Permiso del Usuario</p>
+      </div>
+    </div>
+    <img src="/assets/salir.png" alt="Cerrar Sesión" class="icon">
+    <img src="/assets/menu.png" alt="Menú" (click)="toggleMenu()">
+  </div>
+</nav>
+
+<div class="background-login">
+  <!-- Agrega el elemento que se desplegará al hacer clic en el menú -->
+  <div class="menu-overlay" *ngIf="showMenu" (click)="toggleMenu()"></div>
+</div>
