@@ -1,0 +1,140 @@
+.navbar {
+  background-color: #00548F;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+.navbar img {
+  margin-right: 10px;
+  height: 30px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.user-photo {
+  border-radius: 50%;
+  margin-right: 50px;
+  height: 40px;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name,
+.user-permission {
+  margin: 0;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  height: 30px;
+}
+.background-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  width: 100%;
+  background-image: url('/assets/backgroundLogin.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 1); /* Fondo blanco */
+  z-index: 1000; /* Asegura que el overlay esté por encima del contenido */
+  display: none;
+}
+
+.background-login.active-menu .menu-overlay {
+  display: block;
+}
+/* ------------------------------------------------------------------------------------ */
+.text-center{
+  text-align: center;
+}
+.d-inline{
+  display: inline-block;
+}
+.tarjeta{
+  border: black solid 1px;
+  border-radius: 6px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+.tarjeta-foto{
+  margin-left: 32px;
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  border-radius: 6px;
+
+  background-color: red;
+}
+.botton-foto{
+  position: relative; top: 80%; right: -80%;
+}
+input {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #000;
+  font-size: large;
+  color:#00000080;
+}
+
+
+.p4{
+  padding: 64px;
+}
+.px4{
+  padding: 8px 128px ;
+}
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: large;
+  color:#00548F;
+}
+.col-md-12{
+  position: relative;
+  width: 100%;
+}
+.col-md-8{
+  position: relative;
+  width: 66%;
+}
+.col-md-6{
+  position: relative;
+  width: 50%;
+}
+.col-md-4{
+  position: relative;
+  width: 33%;
+}
