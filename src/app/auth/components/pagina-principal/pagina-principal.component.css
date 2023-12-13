@@ -47,6 +47,7 @@
 .icon {
   height: 30px;
 }
+
 .background-login {
   display: flex;
   flex-direction: column;
@@ -61,19 +62,132 @@
   overflow: hidden;
 }
 
+.menu-btn {
+  cursor: pointer;
+}
 
 .menu-overlay {
   position: fixed;
-  top: 0;
+  top: 100px;
   right: 0;
   bottom: 0;
-  left: 0;
-  background-color: rgba(255, 255, 255, 1); /* Fondo blanco */
-  z-index: 1000; /* Asegura que el overlay esté por encima del contenido */
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 800;
   display: none;
 }
 
 .background-login.active-menu .menu-overlay {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
 
+.menu-content {
+  background-color: #fff;
+  padding: 20px;
+  width: 350px;
+  height: 908px;
+}
+
+.menu-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu-content li {
+  margin-bottom: 10px;
+}
+
+.menu-content a {
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.menu-content .logo {
+  display: block;
+  margin: 0 auto;
+}
+
+hr {
+  width: 80%;
+  height: 5px;
+  background-color: #00548F;
+  border: none;
+  margin: 20px auto;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
+  color: #7E7E7E;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-left: 40px;
+}
+
+
+.card-container {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  padding: 20px;
+  margin-left: 35px;
+}
+
+.rectangle-card {
+  display: flex;
+  align-items: center;
+  width: 30px;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 11px;
+}
+
+.text-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 165px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  margin-left: -10px;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  color: #7E7E7E;
+}
+
+.logout-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.logout-icon {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.logout-container span {
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20.7px;
+  text-align: center;
+  color: #7E7E7E;
+}

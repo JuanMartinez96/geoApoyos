@@ -11,11 +11,41 @@
       </div>
     </div>
     <img src="/assets/salir.png" alt="Cerrar Sesión" class="icon">
-    <img src="/assets/menu.png" alt="Menú" (click)="toggleMenu()">
+    <div class="menu-btn" (click)="toggleMenu()">
+      <img src="/assets/menu.png" alt="Menú">
+    </div>
   </div>
 </nav>
 
-<div class="background-login">
-  <!-- Agrega el elemento que se desplegará al hacer clic en el menú -->
-  <div class="menu-overlay" *ngIf="showMenu" (click)="toggleMenu()"></div>
+<div class="background-login" [class.active-menu]="showMenu">
+  <div class="menu-overlay" *ngIf="showMenu" (click)="toggleMenu()">
+    <div class="menu-content">
+      <div>
+        <img src="/assets/frameMenu.png" alt="Logo Geo Apoyos" class="logo">
+      </div>
+      <h1> MENÚ </h1>
+      <hr>
+      <ul>
+        <li *ngFor="let item of menuItems">
+          <a [routerLink]="item.link">
+            <div class="card-container">
+              <div class="card rectangle-card" [style.background-color]="item.backgroundColor">
+                <img [src]="item.icon" alt="Icon" class="book-icon">
+              </div>
+              <div class="card text-card">
+                <span>{{ item.label }}</span>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <div class="logout-container">
+        <img src="/assets/logoutp.png" alt="Logout Icon" class="logout-icon">
+        <span>Cerrar Sesión</span>
+      </div>
+
+    </div>
+  </div>
 </div>
+

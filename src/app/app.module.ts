@@ -11,6 +11,9 @@ import { IndexComponent } from './auth/components/index/index.component';
 import { MaterialModule } from './auth/material/material.module';
 import { LoginComponent } from './auth/components/login/login.component';
 import { PaginaPrincipalComponent } from './auth/components/pagina-principal/pagina-principal.component';
+import { RegistroComponent } from './auth/components/registro/registro.component';
+import { EstatusComponent } from './auth/components/estatus/estatus.component';
+import { PermisosComponent } from './auth/components/permisos/permisos.component';
 
 
 
@@ -21,6 +24,9 @@ import { PaginaPrincipalComponent } from './auth/components/pagina-principal/pag
     IndexComponent,
     LoginComponent,
     PaginaPrincipalComponent,
+    RegistroComponent,
+    EstatusComponent,
+    PermisosComponent,
   ],
   imports: [
     //Lo de Angular
