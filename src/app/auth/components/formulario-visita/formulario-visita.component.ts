@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  selector: 'app-formulario-visita',
+  templateUrl: './formulario-visita.component.html',
+  styleUrls: ['./formulario-visita.component.css']
 })
-export class RegistroComponent {
+export class FormularioVisitaComponent {
 
   showMenu = false;
 
@@ -18,6 +18,5 @@ export class RegistroComponent {
   toggleMenu() {
     this.showMenu = !this.showMenu;
   }
-
 
 }

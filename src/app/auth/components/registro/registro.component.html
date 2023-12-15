@@ -1,1 +1,132 @@
-<p>registro works!</p>
+<nav class="navbar">
+  <div class="left-section">
+    <img src="/assets/navBarFrame.png" alt="Logo">
+  </div>
+  <div class="right-section">
+    <div class="user-info">
+      <img src="/assets/.jpg" alt="User Photo" class="user-photo">
+      <div class="user-details">
+        <p class="user-name">Cesar rincon</p>
+        <p class="user-permission">Administrador</p>
+      </div>
+    </div>
+    <img src="/assets/salir.png" alt="Cerrar Sesión" class="icon">
+    <div class="menu-btn" (click)="toggleMenu()">
+      <img src="/assets/menu.png" alt="Menú">
+    </div>
+  </div>
+</nav>
+
+<div class="background-login" [class.active-menu]="showMenu">
+  <div class="menu-overlay" *ngIf="showMenu" (click)="toggleMenu()">
+    <div class="menu-content">
+      <div>
+        <img src="/assets/frameMenu.png" alt="Logo Geo Apoyos" class="logo">
+      </div>
+      <h1> MENÚ </h1>
+      <hr>
+      <ul>
+        <li *ngFor="let item of menuItems">
+          <a [routerLink]="item.link">
+            <div class="card-container">
+              <div class="card rectangle-card" [style.background-color]="item.backgroundColor">
+                <img [src]="item.icon" alt="Icon" class="book-icon">
+              </div>
+              <div class="card text-card">
+                <span>{{ item.label }}</span>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <div class="logout-container">
+        <img src="/assets/logoutp.png" alt="Logout Icon" class="logout-icon">
+        <span>Cerrar Sesión</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="card-menu">
+  <h2>SOLICITUD DE ALTA</h2>
+
+  <div class="card-logo">
+    <img src="/assets/geoApoyosAlta.png" alt="Geo Apoyos">
+  </div>
+
+
+  <div class="col-md6">
+    <div class="input-container">
+      <label for="nombre">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+      </label>
+      <label for="edad">
+        <input type="number" id="edad" name="edad" placeholder="Edad">
+      </label>
+      <label for="estado">
+        <input type="text" id="estado" name="estado" placeholder="Estado">
+      </label>
+      <label for="municipio">
+        <input type="text" id="municipio" name="municipio" placeholder="Municipio">
+      </label>
+      <div class="direccion-container">
+
+
+        <div class="calles-container">
+          <label for="calle">
+            <input type="number" id="calle" name="calle" placeholder="Calle">
+          </label>
+          <label for="colonia">
+            <input type="text" id="colonia" name="colonia" placeholder="Colonia">
+          </label>
+
+          <div class="numeros-container">
+            <label class="label_quikito" for="noInt">
+              <input type="number" id="noInt" name="noInt" placeholder="No. Int">
+            </label>
+            <label class="label_quikito" for="noExt">
+              <input type="number" id="noExt" name="noExt" placeholder="No. Ext">
+            </label>
+          </div>
+
+        </div>
+
+        <div>
+          <label for="entreCalles">
+            <input type="text" id="entreCalles" name="entreCalles" placeholder="Entre Calles">
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md6-imagen">
+        <img src="/assets/camara.png" alt="Imagen" class="camara-icon">
+    </div>
+  </div>
+
+  <div class="col-md6-escolar">
+    <label for="nombreInstitucion">
+      <input type="text" id="nombreInstitucion" name="nombreInstitucion" placeholder="Nombre de la institucion">
+    </label>
+    <label for="gradoEscolaridad">
+      <input type="number" id="gradoEscolaridad" name="gradoEscolaridad" placeholder="Grado de escolaridad">
+    </label>
+    <label for="apoyo">
+      <input type="text" id="apoyo" name="apoyo" placeholder="Apoyos">
+    </label>
+    <label for="estatus">
+      <input type="text" id="estatus" name="estatus" placeholder="Esatus">
+    </label>
+  </div>
+
+  <div class="button">
+    <button type="submit">
+      Registrar
+    </button>
+  </div>
+</div>
+
+

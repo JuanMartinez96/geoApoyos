@@ -8,13 +8,5 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(
-    private router: Router
-  ){}
-
-   //funcion que direcciona a la pagina de login
-   redirectPrincipal(){
-    this.router.navigate(['/principal'])
-  }
-
+  
 }

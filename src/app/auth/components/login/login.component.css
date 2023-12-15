@@ -80,7 +80,6 @@ input {
 .remember-me {
   display: inline-flex;
   align-items: center;
-  margin-top: 45px;
 }
 
 .remember-me label {
@@ -95,17 +94,17 @@ input {
 }
 
 .button-container {
-  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 .login-button {
-  background-color: #00548F; /* Color azul */
+  background-color: #00548F;
   color: white;
-  padding: 12px 24px; /* Ajusta el tamaño del botón según sea necesario */
+  padding: 12px 24px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  display: inline-block; /* Hace que el botón ocupe el ancho completo disponible */
+  display: inline-block;
   width: 350px;
   font-family: Arial, Helvetica, sans-serif;
 }

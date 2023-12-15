@@ -55,7 +55,7 @@
   justify-content: center;
   min-height: 90vh;
   width: 100%;
-  background-image: url('/assets/backgroundLogin.png');
+  background-image: url('/assets/backgroundFormularioVisitas.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -191,4 +191,73 @@ h1 {
   line-height: 20.7px;
   text-align: center;
   color: #7E7E7E;
+}
+
+/* Estilos del formulario*/
+
+.card-formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+  width: 600px;
+  padding: 20px;
+  background-color: #fff;
+}
+h2 {
+  color: #00548F;
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 500px;
+  height: 70px;
+  line-height: 34.5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.formulario-visitas label {
+  display: block;
+  margin-right: 200px;
+  margin-bottom: 20px;
+  text-align: left;
+  color: #00548F;
+  width: 250px;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 34.5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.formulario-visitas input {
+  width: 430px;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.boton-visitas button{
+  color: #fff;
+  font-size: 20px;
+  background-color: #1E91E2;
+  margin-bottom: 10px;
+  width: 310px;
+  height: 40px;
+  border: #1E91E2 10px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.boton-lista button{
+  color: #fff;
+  font-size: 20px;
+  background-color: #E21E5D  ;
+  margin-top: 10px;
+  width: 310px;
+  height: 40px;
+  border: #E21E5D 10px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
 }

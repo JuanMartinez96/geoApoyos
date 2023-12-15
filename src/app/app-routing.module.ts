@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './auth/components/index/index.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { PaginaPrincipalComponent } from './auth/components/pagina-principal/pagina-principal.component';
-import { EstatusComponent } from './auth/components/estatus/estatus.component';
+import { FormularioVisitaComponent } from './auth/components/formulario-visita/formulario-visita.component';
 import { PermisosComponent } from './auth/components/permisos/permisos.component';
 import { RegistroComponent } from './auth/components/registro/registro.component';
+
 
 const routes: Routes = [
   {
@@ -21,16 +22,16 @@ const routes: Routes = [
     component: PaginaPrincipalComponent
   },
   {
-    path: 'estatus',
-    component: EstatusComponent
+    path: 'registro',
+    component: RegistroComponent
+  },
+  {
+    path: 'visitas',
+    component: FormularioVisitaComponent
   },
   {
     path: 'permisos',
     component: PermisosComponent
-  },
-  {
-    path: 'registro',
-    component: RegistroComponent
   },
   {
     path: '',
