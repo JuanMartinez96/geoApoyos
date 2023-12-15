@@ -8,7 +8,7 @@ import { R_permisos, R_roles} from '../interfaces/roles_permisos';
 
 
 
-export class roles_permisos {
+export class S_roles_permisos {
     // public URL = ConfiguracionesComponent.apiUrl;
     public URL = "ConfiguracionesComponent.apiUrl";
     constructor(private http: HttpClient) { }

@@ -1,18 +1,18 @@
 export interface R_estados {
-    estados:String[];
+    estados:string[];
 }
 export interface R_municipios {
-    municipios:String[];
+    municipios:string[];
 }
 
 export interface R_verificarConexion {
     connected:boolean;
-    message:String;
+    message:string;
 }
 export interface R_serviciosExtra_Coordenadar {
     latitud:number;
     longitud:number;
 }
 export interface I_serviciosExtra_Coordenadar {
-    direccion:String;
+    direccion:string;
 }

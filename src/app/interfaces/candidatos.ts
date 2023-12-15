@@ -107,30 +107,33 @@ export interface I_agregarCandidato{
     edad:number;
     estado:string;
     municipio:string;
+
     colonia:string;
     calle:string;
     entre_calles:string;
     no_int:number;
+
     no_ext:string;
     institucion:string;
     grado_escolaridad:string;
     fotografia:string;
+    
     id_tipo_apoyo:number;
     id_estatus:number;
     latitud:number;
     longitud:number;
 
 //  PREGUNTAS ----------------------------------------------------------------
-    pregunta1: number;
-    pregunta2:string; //": "none",
-    pregunta3:string; //": "none",
-    pregunta4:string; //": "none",
-    pregunta5:string; //": "none",
-    pregunta6:string; //": "none",
-    pregunta7:string; //": "none",
-    pregunta8:string; //": "none",
-    pregunta9:string; //": "none",
-    pregunta10:Pregunta10;
+    // pregunta1 ?:number;
+    // pregunta2 ?:string; //": "none",
+    // pregunta3 ?:string; //": "none",
+    // pregunta4 ?:string; //": "none",
+    // pregunta5 ?:string; //": "none",
+    // pregunta6 ?:string; //": "none",
+    // pregunta7 ?:string; //": "none",
+    // pregunta8 ?:string; //": "none",
+    // pregunta9 ?:string; //": "none",
+    // pregunta10 ?:Pregunta10;
 }
 
 

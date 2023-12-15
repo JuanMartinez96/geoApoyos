@@ -9,7 +9,7 @@ import { I_mensaje } from '../interfaces/mensaje';
 
 
 
-export class auth {
+export class S_auth {
     // public URL = ConfiguracionesComponent.apiUrl;
     public URL = "ConfiguracionesComponent.apiUrl";
     constructor(private http: HttpClient) { }

@@ -77,64 +77,98 @@
   display: block;
 }
 /* ------------------------------------------------------------------------------------ */
-.text-center{
-  text-align: center;
-}
-.d-inline{
-  display: inline-block;
-}
 .tarjeta{
   border: black solid 1px;
   border-radius: 6px;
-  padding-top: 32px;
-  padding-bottom: 32px;
 }
 .tarjeta-foto{
-  margin-left: 32px;
-  position: absolute;
-  width: 80%;
+  border: black solid 1px;
+  border-radius: 6px;
+
+  height: 100%;
+}
+.tarjeta-foto{
+  /* position: absolute; */
+  width: 100%;
   height: 100%;
   border-radius: 6px;
 
-  background-color: red;
+  background-color: #00000020;
+
+  background-repeat: no-repeat;
+  background-position:center;
+  background-size: cover;
 }
 .botton-foto{
-  position: relative; top: 80%; right: -80%;
+  position: relative; 
+  top:calc(100% - 64px);
+  left: calc(100% - 64px); 
 }
-input {
+.botton-foto .label {
+  cursor: pointer;
+}
+h1{
+  color: #00548F;
+  font-size: xx-large;
+  font-family: Helvetica;
+  font-weight: 700;
+  word-wrap: break-word;
+  
+}
+input,select {
   border: none;
   outline: none;
   border-bottom: 1px solid #000;
   font-size: large;
   color:#00000080;
 }
+.bg-azul_2{background-color: #00548F;}
+.button_blue2{
+  background-color: #00548F;
+  color: white;
+}
+.button_blue2:hover{
+  background-color: #003571;
+  color: white;
+}
+.button_naranja2{
+  background-color: #FF9900;
+  color: white;
+}
+.button_naranja2:hover{
+  background-color: rgb(205, 103, 0);
+  color: white;
+}
 
 
 .p4{
   padding: 64px;
 }
+.py4{
+  padding: 32px 0 ;
+}
 .px4{
   padding: 8px 128px ;
 }
+
 .row{
-  display: flex;
-  flex-wrap: wrap;
   font-size: large;
   color:#00548F;
 }
-.col-md-12{
-  position: relative;
-  width: 100%;
+.my_icons{
+  background-color:#1E91E2;
+  color: white;
+  padding-top: 8px;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
 }
-.col-md-8{
-  position: relative;
-  width: 66%;
-}
-.col-md-6{
-  position: relative;
-  width: 50%;
-}
-.col-md-4{
-  position: relative;
-  width: 33%;
-}
+
+
+
+/* -------------------------------------------------- */
+

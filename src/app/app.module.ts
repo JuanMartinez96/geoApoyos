@@ -12,7 +12,11 @@ import { MaterialModule } from './auth/material/material.module';
 import { LoginComponent } from './auth/components/login/login.component';
 import { PaginaPrincipalComponent } from './auth/components/pagina-principal/pagina-principal.component';
 
-
+//COSILLAS PAL BRANDON 7W7
+import { FormsModule } from '@angular/forms';
+import { EncuestaComponent } from './auth/components/encuesta/encuesta.component';
+// ng add @angular/common/http
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,6 +25,7 @@ import { PaginaPrincipalComponent } from './auth/components/pagina-principal/pag
     IndexComponent,
     LoginComponent,
     PaginaPrincipalComponent,
+    EncuestaComponent
   ],
   imports: [
     //Lo de Angular
@@ -32,6 +37,9 @@ import { PaginaPrincipalComponent } from './auth/components/pagina-principal/pag
     AppRoutingModule,
     MaterialModule,
 
+    //COSILLAS PAL BRANDON 7W7
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

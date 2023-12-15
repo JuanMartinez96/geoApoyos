@@ -10,7 +10,7 @@ import { R_Candidatos,R_CandidatoVisita, I_agregarCandidato ,I_agregarVisita,Upd
 
 
 
-export class cadidatos{
+export class S_cadidatos{
     // public URL = ConfiguracionesComponent.apiUrl;
     public URL = "ConfiguracionesComponent.apiUrl";
     constructor(private http: HttpClient) { }

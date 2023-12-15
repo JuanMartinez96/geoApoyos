@@ -8,9 +8,9 @@ import { R_apoyos, R_ApoyosStatus } from '../interfaces/apoyos';
 
 
 
-export class apoyos {
+export class S_apoyos {
     // public URL = ConfiguracionesComponent.apiUrl;
-    public URL = "ConfiguracionesComponent.apiUrl";
+    public URL = "https://prototipo2023-d6240700184c.herokuapp.com/";
     constructor(private http: HttpClient) { }
 
     
