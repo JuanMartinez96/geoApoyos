@@ -39,4 +39,12 @@ export class S_cadidatos{
         return this.http.post<I_mensaje>(`${this.URL}api/candidatos/${id}`,nuevos_datos);
     }
 
+
+    updateImage(data: FormData, id: number): Observable<any> {
+        return this.http.put<any>(`${this.URL}/api/uploads/visitas/${id}`, data);
+    }
+    getImage(id: number): Observable<any> {
+        return this.http.get<any>(`${this.URL}/api/uploads/visitas/${id}`)
+    }
+
 }

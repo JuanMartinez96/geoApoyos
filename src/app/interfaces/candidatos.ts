@@ -92,12 +92,15 @@ export interface Pregunta10{
     a1:string;
     a2:string;
     a3:string;
-    a4:string;
 
+    a4:string;
     a5:string;
     a6:string;
+
     a7:string;
     a8:string;
+    a9:string;
+
 }
 
 // INSERTAR CANDIDATO
@@ -124,16 +127,16 @@ export interface I_agregarCandidato{
     longitud:number;
 
 //  PREGUNTAS ----------------------------------------------------------------
-    // pregunta1 ?:number;
-    // pregunta2 ?:string; //": "none",
-    // pregunta3 ?:string; //": "none",
-    // pregunta4 ?:string; //": "none",
-    // pregunta5 ?:string; //": "none",
-    // pregunta6 ?:string; //": "none",
-    // pregunta7 ?:string; //": "none",
-    // pregunta8 ?:string; //": "none",
-    // pregunta9 ?:string; //": "none",
-    // pregunta10 ?:Pregunta10;
+    pregunta1 :number;
+    pregunta2 :string; //": "none",
+    pregunta3 :string; //": "none",
+    pregunta4 :string; //": "none",
+    pregunta5 :string; //": "none",
+    pregunta6 :string; //": "none",
+    pregunta7 :string; //": "none",
+    pregunta8 :string; //": "none",
+    pregunta9 :string; //": "none",
+    pregunta10 :Pregunta10;
 }
 
 

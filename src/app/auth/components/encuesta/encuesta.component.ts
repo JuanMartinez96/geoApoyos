@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { I_agregarCandidato } from 'src/app/interfaces/candidatos';
 import { S_apoyos } from 'src/app/servicios/apoyos.service';
 import { S_extras } from 'src/app/servicios/extras.service';
+import { S_cadidatos } from 'src/app/servicios/cadidatos.service';
 
 @Component({
   selector: 'app-pagina-principal',
@@ -20,8 +21,8 @@ export class EncuestaComponent implements OnInit{
     id_tipo_apoyo:1,
     id_estatus:1,
 
-    estado:"guanajuato",
-    municipio:"leon",
+    estado:"",
+    municipio:"",
 
     colonia:"ermita",
     calle:"eros",
@@ -32,6 +33,27 @@ export class EncuestaComponent implements OnInit{
     fotografia:"string",
     latitud:1,
     longitud:1,
+
+    pregunta1 : 1,
+    pregunta2 : 'Casa Propia',
+    pregunta3 : '1',
+    pregunta4 : '1',
+    pregunta5 : '1',
+    pregunta6 : '1',
+    pregunta7 : '1',
+    pregunta8 : 'Si',
+    pregunta9 : 'Si',
+    pregunta10:{
+      a1:'Si',
+      a2:'Si',
+      a3:'Si',
+      a4:'Si',
+      a5:'Si',
+      a6:'Si',
+      a7:'Si',
+      a8:'Si',
+      a9:'Si'
+    }
   }
   hay_ubucacion = false;
   apoyos_lista: string[] = [];
@@ -49,11 +71,13 @@ export class EncuestaComponent implements OnInit{
 
   constructor(
     private API_apoyo: S_apoyos,
-    private API_extras: S_extras
+    private API_extras: S_extras,
+    private API_candidato: S_cadidatos
   ){
-  }
-  ngOnInit(){
     
+    
+  }
+  ngOnInit(){    
     this.API_extras.getEstados().subscribe((r)=>{
       this.estado_lista = r.estados;
       this.candidato.estado = r.estados[0];
@@ -62,20 +86,35 @@ export class EncuestaComponent implements OnInit{
     
     this.API_apoyo.getApoyos().subscribe((r)=>{
       this.apoyos_lista = r.apoyo;
-      this.candidato.id_tipo_apoyo = 0;
+      this.candidato.id_tipo_apoyo = 1;
     });
     this.API_apoyo.getApoyosStatus().subscribe((r)=>{
       this.apoyos_estatus = r.apoyo_estatus;
-      this.candidato.id_estatus = 0;
+      this.candidato.id_estatus = 1;
     });
   }
 
   onSubmit(form: NgForm){
-    if (this.hay_ubucacion == true) {
-      console.log('Formulario enviado:', form.value);
+
+    if(form.valid == true){
+      if (this.imageUrl != '') {
+
+        if (this.hay_ubucacion == true) {
+          console.log('Formulario enviado:', form.value);
+          console.log(this.candidato);
+          
+          // this.API_candidato.UpdateCandidato(this.candidato, 1).subscribe(()=>{});
+        }else{
+          alert('VERIFIQUE SU UBICACION EN EL MAPA');
+        }
+
+      }else{
+        alert('Falta una foto');  
+      }
     }else{
-      alert('AUN NO REVISA SU UBICACION');
+      alert('Faltan datos');
     }
+    
   }
 
   getMunicipios(){
@@ -115,4 +154,5 @@ export class EncuestaComponent implements OnInit{
       reader.readAsDataURL(file);
     }
   }
+  
 }

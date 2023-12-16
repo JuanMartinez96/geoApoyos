@@ -34,32 +34,32 @@
       <div class="row px-5 py-2">
         <label class="col-md-4"><b>Nombre Completo</b></label>
         <input class="col-md-6" type="text" name="nombre" placeholder="Mi nombre"
-          [(ngModel)]="candidato.nombre">
+          [(ngModel)]="candidato.nombre" required>
 
       </div>
 
       <div class="row px-5 py-2">
         <label class="col-md-4"><b>Edad</b></label>
         <input class="col-md-6" type="number" name="edad" placeholder="Mi edad"
-          [(ngModel)]="candidato.edad">
+          [(ngModel)]="candidato.edad" max="100" required>
       </div>
 
       <div class="row px-5 py-2">
         <label class="col-md-4"><b>Nombre de Institución</b></label>
         <input class="col-md-6" type="text" name="institucion" placeholder="Mi institución"
-          [(ngModel)]="candidato.institucion">
+          [(ngModel)]="candidato.institucion" minlength="3" maxlength="20" required>
       </div>
 
       <div class="row px-5 py-2">
         <label class="col-md-4"><b>Grado de escolaridad</b></label>
         <input class="col-md-6" type="text" name="grado_escolaridad" placeholder="Mi grado de estidio"
-          [(ngModel)]="candidato.grado_escolaridad">
+          [(ngModel)]="candidato.grado_escolaridad" minlength="5" maxlength="20" required>
       </div>
 
       <div class="row px-5 py-2">
         <label class="col-md-4"><b>Tipo de apoyo</b></label>
-        <select class="col-sm-6" name="estado" [(ngModel)]="candidato.id_tipo_apoyo">
-          <option  [value]="i" *ngFor="let a of apoyos_lista, let i = index">{{a}}</option>
+        <select class="col-sm-6" name="id_tipo_apoyo" [(ngModel)]="candidato.id_tipo_apoyo" required>
+          <option  [value]="i+1" *ngFor="let a of apoyos_lista, let i = index">{{a}}</option>
         </select>
         <!-- <input class="col-md-6" type="number" name="id_tipo_apoyo" placeholder="Beca Promedio"
           [(ngModel)]="candidato.id_tipo_apoyo"> -->
@@ -67,8 +67,8 @@
 
       <div class="row px-5 py-2">
         <label class="col-md-4"><b>Estatus de Apoyo</b></label>
-        <select class="col-sm-6" name="estado" [(ngModel)]="candidato.id_estatus">
-          <option  [value]="i" *ngFor="let a of apoyos_estatus, let i = index">{{a}}</option>
+        <select class="col-sm-6" name="id_estatus" [(ngModel)]="candidato.id_estatus" required>
+          <option  [value]="i+1" *ngFor="let a of apoyos_estatus, let i = index">{{a}}</option>
         </select>
         <!-- <input class="col-md-6" type="text" name="" placeholder="ACTIVO"> -->
       </div>
@@ -77,11 +77,14 @@
     <div class="col-md-1" ></div>
 
     <div class="col-md-3 p-0 ">
-      <div class="tarjeta-foto p-0" style="background-image: url({{imageUrl}});">
-        
+      <div class="tarjeta-foto p-0"
+        [style.background-image]="imageUrl ? 'url(' + imageUrl + ')' : 'url(https://prototipo2023-d6240700184c.herokuapp.com/api/uploads/visitas/4)'"
+        >
+
         <div class=" btn botton-foto button_blue2 bg-azul_2">
           <input type="file" id="fileInput" class="d-none" accept=".jpg, .jpeg, .png"
-            (change)="onFileChange($event)" #fileInput>
+            
+            (change)="onFileChange($event)" #fileInput required>
           <label for="fileInput">
             <span class="icon"><i class="bi bi-camera-fill"></i></span>
           </label>
@@ -123,7 +126,7 @@
             </select>
 
             <label class="col-sm-3"><b>Municipio</b></label>
-            <select class="col-sm-3" name="estado" [(ngModel)]="candidato.municipio">
+            <select class="col-sm-3" name="municipio" [(ngModel)]="candidato.municipio">
               <option  [value]="m" *ngFor="let m of municipio_lista">{{m}}</option>
             </select>
           </div>
@@ -131,19 +134,19 @@
           <div class="row">
             <label class="col-sm-3"><b>Calle</b></label>
             <input class="col-sm-9" type="text" name="calle" placeholder="calle"
-              [(ngModel)]="candidato.calle">
+              [(ngModel)]="candidato.calle" minlength="3" maxlength="20" required>
           </div>
           <br>
           <div class="row">
             <label class="col-sm-3"><b>Colonia</b></label>
             <input class="col-sm-9" type="text" name="colonia" placeholder="colonia"
-              [(ngModel)]="candidato.colonia">
+              [(ngModel)]="candidato.colonia" minlength="3" maxlength="20" required>
           </div>
           <br>
           <div class="row">
             <label class="col-sm-3"><b>Entre calles</b></label>
             <input class="col-sm-9" type="text" name="entre_calles" placeholder="entre_calles"
-              [(ngModel)]="candidato.entre_calles">
+              [(ngModel)]="candidato.entre_calles" minlength="3" maxlength="20" required>
           </div> 
           <br>
         </div>
@@ -152,13 +155,13 @@
           <div class="row">
             <label class="col-sm-4"><b>No. Ext</b></label>
             <input class="col-sm-6" type="text" name="no_ext" placeholder="no_ext"
-              [(ngModel)]="candidato.no_ext">
+              [(ngModel)]="candidato.no_ext" minlength="3" maxlength="6" required>
           </div>
           <br>
           <div class="row">
             <label class="col-sm-4"><b>No. Int</b></label>
             <input class="col-sm-6" type="number" name="no_int" placeholder="no_int"
-              [(ngModel)]="candidato.no_int">
+              [(ngModel)]="candidato.no_int" minlength="3" maxlength="6" required>
           </div>
           <br>
           <div class="row pt-4">
@@ -188,11 +191,11 @@
             <div class="row radio">
               <div class="col-sm-4"></div>
               <div class="col-sm-4">
-                <input type="radio" name="casa">
+                <input type="radio" name="preunta2" value="Casa Propia" [(ngModel)]="candidato.pregunta2" required>
                 <label for="casa" class="mx-2">Casa Propia</label>
               </div>
               <div class="col-sm-4">
-                <input type="radio" name="casa">
+                <input type="radio" name="preunta2" value="Renta" [(ngModel)]="candidato.pregunta2" required>
                 <label for="casa" class="mx-2">Renta</label>
               </div>
             </div>
@@ -203,24 +206,111 @@
 
         <div class="row px-4">
           <div class="px-4 ">
-            <div class="my_icons mx-4">1</div>
+            <div class="my_icons mx-4">2</div>
             <div class="d-inline-block p-1 w-75">
               <label>¿Cuantas personas viven en el domicilio?</label>
-              <input class="d-inline-block w-100 my-4" type="text" placeholder="">
+              <input class="d-inline-block w-100 my-4" type="number" name="preunta1" [(ngModel)]="candidato.pregunta1" required min="1" max="10">
             </div>
           </div>  
         </div>
 
         <div class="row px-4">
           <div class="px-4 ">
-            <div class="my_icons mx-4">1</div>
+            <div class="my_icons mx-4">3</div>
             <div class="d-inline-block p-1 w-75">
-              <label>¿Cuantas personas viven en el domicilio?</label>
-              <input class="d-inline-block w-100 my-4" type="text" placeholder="">
+              <label>¿Cuántos hermanos(as) tienes? (Sin contarte a tí)</label>
+              <input class="d-inline-block w-100 my-4" type="number" name="preunta3" [(ngModel)]="candidato.pregunta3" required required min="1" max="10">
             </div>
           </div>  
         </div>
 
+        <div class="row px-4">
+          <div class="px-4 ">
+            <div class="my_icons mx-4">4</div>
+            <div class="d-inline-block p-1 w-75">
+              <label>Sin contar pasillos y baños, ¿cuántas habitaciones de tu hogar con utilizadas para dormir?</label>
+              <input class="d-inline-block w-100 my-4" type="number" name="preunta4" [(ngModel)]="candidato.pregunta4" required required min="1" max="10">
+            </div>
+          </div>  
+        </div>
+
+        <div class="row px-4">
+          <div class="px-4 ">
+            <div class="my_icons mx-4">5</div>
+            <div class="d-inline-block p-1 w-75">
+              <label>¿Cuántos baños con regadera y escusado hay en tu hogar?</label>
+              <input class="d-inline-block w-100 my-4" type="number" name="preunta5" [(ngModel)]="candidato.pregunta5" required required min="1" max="10">
+            </div>
+          </div>  
+        </div>
+
+        <div class="row px-4">
+          <div class="px-4 ">
+            <div class="my_icons mx-4">6</div>
+            <div class="d-inline-block p-1 w-75">
+              <label>¿Cuántos vehículos tienes en tu hogar?</label>
+              <input class="d-inline-block w-100 my-4" type="number" name="preunta6" [(ngModel)]="candidato.pregunta6" required required min="1" max="10">
+            </div>
+          </div>  
+        </div>
+
+        <div class="row px-4">
+          <div class="px-4 ">
+            <div class="my_icons mx-4">7</div>
+            <div class="d-inline-block p-1 w-75">
+              <label>Sin considerar los datos móviles de tu celular, ¿tu casa cuenta con conexión a internet?</label>
+              <input class="d-inline-block w-100 my-4" type="number" name="preunta7" [(ngModel)]="candidato.pregunta7" required required min="1" max="10">
+            </div>
+          </div>  
+        </div>
+
+        <div class="row px-4">
+          <div class="px-4 ">
+            <div class="my_icons mx-4">8</div>
+            <div class="d-inline-block p-1 w-75">
+              <label>¿Recibes tú o algún miembro de la familia alguna beca de estudios?</label>
+              <!-- <input class="d-inline-block w-100 my-4" type="number" name="preunta8" [(ngModel)]="candidato.pregunta8" required required min="1" max="10"> -->
+              
+              <div class="row radio py-4">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                  <input type="radio" name="preunta8" value="Si" [(ngModel)]="candidato.pregunta8">
+                  <label for="preunta8" class="mx-2">Sí</label>
+                </div>
+                <div class="col-sm-4">
+                  <input type="radio" name="preunta8" value="No" [(ngModel)]="candidato.pregunta8">
+                  <label for="preunta8" class="mx-2">No</label>
+                </div>
+              </div>
+
+            </div>
+          </div>  
+        </div>
+
+        <div class="row px-4">
+          <div class="px-4 ">
+            <div class="my_icons mx-4">9</div>
+            <div class="d-inline-block p-1 w-75">
+              <label>¿Recibes tú o algún miembro de la familia alguna beca de estudios?</label>
+
+              
+              <div class="row radio py-4">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                  <input type="radio" name="preunta9" value="Si" [(ngModel)]="candidato.pregunta9">
+                  <label for="preunta9" class="mx-2">Sí</label>
+                </div>
+                <div class="col-sm-4">
+                  <input type="radio" name="preunta9" value="No" [(ngModel)]="candidato.pregunta9">
+                  <label for="preunta9" class="mx-2">No</label>
+                </div>
+              </div>
+
+            </div>
+          </div>  
+        </div>
+        <!-- SI O NO  -->
+        <!-- --------------------------------------------------------------------------------------------- -->
         <div class="row px-4">
           <div class="px-4 ">
             <div class="my_icons mx-4">10</div>
@@ -242,19 +332,75 @@
               <div class="row w-100">
                 <div class="col-sm-8 py-2"><div class="px-4"><span>Television</span></div></div>
                 <div class="col-sm-4 py-2">
-                  Sí <input type="radio">
-                  No <input type="radio">
+                  Sí <input type="radio" name="pregunta10a1" value="Si" [(ngModel)]="candidato.pregunta10.a1">
+                  No <input type="radio" name="pregunta10a1" value="No" [(ngModel)]="candidato.pregunta10.a1">
                 </div>
               </div>
+
               <div class="row w-100">
-                <div class="col-sm-8 py-2"><div class="px-4"><span>Television</span></div></div>
+                <div class="col-sm-8 py-2"><div class="px-4"><span>Videocasetera o DVD</span></div></div>
                 <div class="col-sm-4 py-2">
-                  Sí <input type="radio">
-                  No <input type="radio">
+                  Sí <input type="radio" name="pregunta10a2" value="Si" [(ngModel)]="candidato.pregunta10.a2">
+                  No <input type="radio" name="pregunta10a2" value="No" [(ngModel)]="candidato.pregunta10.a2">
+                </div>
+              </div>
+
+              <div class="row w-100">
+                <div class="col-sm-8 py-2"><div class="px-4"><span>Refrigerador</span></div></div>
+                <div class="col-sm-4 py-2">
+                  Sí <input type="radio" name="pregunta10a3" value="Si" [(ngModel)]="candidato.pregunta10.a3">
+                  No <input type="radio" name="pregunta10a3" value="No" [(ngModel)]="candidato.pregunta10.a3">
+                </div>
+              </div>
+
+              <div class="row w-100">
+                <div class="col-sm-8 py-2"><div class="px-4"><span>Estufa de gas</span></div></div>
+                <div class="col-sm-4 py-2">
+                  Sí <input type="radio" name="pregunta10a4" value="Si" [(ngModel)]="candidato.pregunta10.a4">
+                  No <input type="radio" name="pregunta10a4" value="No" [(ngModel)]="candidato.pregunta10.a4">
+                </div>
+              </div>
+
+              <div class="row w-100">
+                <div class="col-sm-8 py-2"><div class="px-4"><span>Calentador</span></div></div>
+                <div class="col-sm-4 py-2">
+                  Sí <input type="radio" name="pregunta10a5" value="Si" [(ngModel)]="candidato.pregunta10.a5">
+                  No <input type="radio" name="pregunta10a5" value="No" [(ngModel)]="candidato.pregunta10.a5">
+                </div>
+              </div>
+
+              <div class="row w-100">
+                <div class="col-sm-8 py-2"><div class="px-4"><span>Lavadora</span></div></div>
+                <div class="col-sm-4 py-2">
+                  Sí <input type="radio" name="pregunta10a6" value="Si" [(ngModel)]="candidato.pregunta10.a6">
+                  No <input type="radio" name="pregunta10a6" value="No" [(ngModel)]="candidato.pregunta10.a6">
+                </div>
+              </div>
+
+              <div class="row w-100">
+                <div class="col-sm-8 py-2"><div class="px-4"><span>Automóvil</span></div></div>
+                <div class="col-sm-4 py-2">
+                  Sí <input type="radio" name="pregunta10a7" value="Si" [(ngModel)]="candidato.pregunta10.a7">
+                  No <input type="radio" name="pregunta10a7" value="No" [(ngModel)]="candidato.pregunta10.a7">
                 </div>
               </div>
               
-              
+              <div class="row w-100">
+                <div class="col-sm-8 py-2"><div class="px-4"><span>Mocroondas</span></div></div>
+                <div class="col-sm-4 py-2">
+                  Sí <input type="radio" name="pregunta10a8" value="Si" [(ngModel)]="candidato.pregunta10.a8">
+                  No <input type="radio" name="pregunta10a8" value="No" [(ngModel)]="candidato.pregunta10.a8">
+                </div>
+              </div>
+
+              <div class="row w-100">
+                <div class="col-sm-8 py-2"><div class="px-4"><span>Computadora</span></div></div>
+                <div class="col-sm-4 py-2">
+                  Sí <input type="radio" name="pregunta10a9" value="Si" [(ngModel)]="candidato.pregunta10.a9">
+                  No <input type="radio" name="pregunta10a9" value="No" [(ngModel)]="candidato.pregunta10.a9">
+                </div>
+              </div>
+
             </div>
             <div class="col-sm-3"></div>
           </div>
@@ -271,7 +417,10 @@
 
         </div>
 
-        <div class="row py-5"></div>
+        <div class="row py-5">
+          <input type="hidden" [(ngModel)]="candidato.latitud" name="latitud">
+          <input type="hidden" [(ngModel)]="candidato.longitud" name="longitud">
+        </div>
 
     </div>
     
