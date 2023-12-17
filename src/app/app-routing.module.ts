@@ -4,6 +4,7 @@ import { IndexComponent } from './auth/components/index/index.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { PaginaPrincipalComponent } from './auth/components/pagina-principal/pagina-principal.component';
 import {EncuestaComponent} from './auth/components/encuesta/encuesta.component';
+import { ListaapoyosComponent } from './auth/components/listaapoyos/listaapoyos.component';
 
 const routes: Routes = [
   {path: '',redirectTo: 'index', pathMatch: 'full'},
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path:'encuesta',
     component:EncuestaComponent
+  },
+  {
+    path:'lista_apoyos',
+    component:ListaapoyosComponent
   }
 ];
 

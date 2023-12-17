@@ -11,7 +11,7 @@ import { I_mensaje } from '../interfaces/mensaje';
 
 export class S_auth {
     // public URL = ConfiguracionesComponent.apiUrl;
-    public URL = "ConfiguracionesComponent.apiUrl";
+    public URL = "https://prototipo2023-d6240700184c.herokuapp.com/";
     constructor(private http: HttpClient) { }
 
     

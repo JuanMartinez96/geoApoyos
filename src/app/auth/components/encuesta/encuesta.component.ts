@@ -64,6 +64,7 @@ export class EncuestaComponent implements OnInit{
 
   @ViewChild('fileInput') fileInput: ElementRef | undefined;
   imageUrl: string = '';
+  selectedFile!: File ;
 
 
   showMenu = false;
@@ -100,8 +101,22 @@ export class EncuestaComponent implements OnInit{
       if (this.imageUrl != '') {
 
         if (this.hay_ubucacion == true) {
-          console.log('Formulario enviado:', form.value);
-          console.log(this.candidato);
+          // console.log('Formulario enviado:', form.value);
+          // console.log(this.candidato);
+          
+          
+          // console.log(this.selectedFile);
+          
+          var formData = new FormData();
+          if (this.selectedFile) {
+            formData.append('archivo', this.selectedFile);
+
+            formData.forEach((value, key) => {
+              console.log(`Key: ${key}, Value: ${value}`);
+            });
+            console.log(formData);
+          }
+          
           
           // this.API_candidato.UpdateCandidato(this.candidato, 1).subscribe(()=>{});
         }else{
@@ -146,7 +161,10 @@ export class EncuestaComponent implements OnInit{
 
   onFileChange(event: any) {
     const file = event.target.files[0];
+    
     if (file) {
+      this.selectedFile = file;
+      
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.imageUrl = e.target.result;

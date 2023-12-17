@@ -1,8 +1,8 @@
 export interface R_Candidatos {
-    cantidatos:cantidato[];
+    candidatos:candidatos[];
 }
 
-export interface cantidato {
+export interface candidatos {
     id_candidato: number;
     nombre: string;
     edad: number;
@@ -18,7 +18,7 @@ export interface cantidato {
     institucion: string;
     grado_escolaridad: string;
     id_tipo_apoyo: number;
-    id_estatus_apoyo: number;
+    id_estatus: number;
     fotografia: string;
 
     created_at: string;
@@ -85,6 +85,20 @@ export interface I_visita{
     id_rol: number;
     token:string;
     estatus: number;
+}
+export interface visitas{
+    visitas:visita[]
+}
+export interface visita{
+    id_visita: number,
+    estatus_apoyo: number,
+    visitado: number,
+    estatus_encuesta: number,
+
+    nombre: string,
+    nombre_usuario: string,
+    fecha_visita: string,
+    catalogos: string
 }
 
 export interface Pregunta10{
