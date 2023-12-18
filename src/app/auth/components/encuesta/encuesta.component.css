@@ -167,7 +167,10 @@ input,select {
   display: inline-block;
   vertical-align: top;
 }
-
+#map{
+  height: 32vw;
+  background-color: #00000020;
+}
 
 
 /* -------------------------------------------------- */

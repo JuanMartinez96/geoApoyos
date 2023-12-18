@@ -19,6 +19,9 @@ import { FormularioVisitaComponent } from './auth/components/formulario-visita/f
 import { FormsModule } from '@angular/forms';
 import { EncuestaComponent } from './auth/components/encuesta/encuesta.component';
 // ng add @angular/common/http
+// NOP --> npm install @here/maps-api-for-javascript
+// npm install mapbox-gl
+// npm install @types/mapbox-gl
 import { HttpClientModule } from '@angular/common/http';
 import { ListaapoyosComponent } from './auth/components/listaapoyos/listaapoyos.component';
 import { FiltroPipe } from './auth/components/listaapoyos/filtro.pipe';

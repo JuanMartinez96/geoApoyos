@@ -1,12 +1,15 @@
-import { Component, OnInit , ElementRef, ViewChild, Input} from '@angular/core';
+import { Component, OnInit , ElementRef, ViewChild, Input,AfterViewInit} from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
-
+// import { S_heremaps } from 'src/app/servicios/here_maps.service';
 
 import { I_agregarCandidato, I_visita } from 'src/app/interfaces/candidatos';
 import { S_apoyos } from 'src/app/servicios/apoyos.service';
 import { S_extras } from 'src/app/servicios/extras.service';
 import { S_cadidatos } from 'src/app/servicios/cadidatos.service';
+
+import * as mapboxgl from 'mapbox-gl';
+(mapboxgl as any).accessToken = 'pk.eyJ1IjoiZWxqdWFuIiwiYSI6ImNsb3h3OWRrbjE4dW4yaXBrOTQwbnVpcTgifQ.yTolcwsR9FaHdpA-yAmoHQ';
 
 @Component({
   selector: 'app-pagina-principal',
@@ -42,8 +45,8 @@ export class EncuestaComponent implements OnInit{
     no_ext:"2011",
     
     fotografia:"string",
-    latitud:1,
-    longitud:1,
+    latitud:0,
+    longitud:0,
 
     pregunta1 : 1,
     pregunta2 : 'Casa Propia',
@@ -79,7 +82,7 @@ export class EncuestaComponent implements OnInit{
   estado_lista: string[] = [];
   municipio_lista: string[] = [];
 
-
+  @ViewChild('map', { static: true }) mapElement!: ElementRef;
   @ViewChild('fileInput') fileInput: ElementRef | undefined;
   imageUrl: string = '';
   selectedFile!: File ;
@@ -94,6 +97,7 @@ export class EncuestaComponent implements OnInit{
     private API_candidato: S_cadidatos,
     private route: ActivatedRoute,
     private router: Router
+    // private hereMapsService: S_heremaps
   ){
     
     
@@ -102,8 +106,6 @@ export class EncuestaComponent implements OnInit{
     this.API_extras.getEstados().subscribe((r)=>{
       this.estado_lista = r.estados;
       this.candidato.estado = r.estados[0];
-      
-      
     });
     
     this.API_apoyo.getApoyos().subscribe((r)=>{
@@ -124,38 +126,75 @@ export class EncuestaComponent implements OnInit{
       }else{
         this.API_candidato.GetCandidatoVisita(id).subscribe((r)=>{
           this.candidato = r.result[0];
+          this.imageUrl = 'https://prototipo2023-d6240700184c.herokuapp.com/api/uploads/visitas/'+this.candidato.id_visita;
+          this.valoresPorDefecto();
           this.getMunicipios(this.candidato.estado);
         });
+        this.hay_ubucacion = true;
+        this.GetMapa();
       }
       
 
     });
+    
   }
 
   onSubmit(form: NgForm){
-
     if(form.valid == true){
-      if (this.imageUrl != '') {
+      if (this.imageUrl != '' ) {
 
         if (this.hay_ubucacion == true) {
           // console.log('Formulario enviado:', form.value);
           // console.log(this.candidato);
-          
-          
-          // console.log(this.selectedFile);
+          const nuevos_datos:I_agregarCandidato = {
+            nombre:this.candidato.nombre,
+            edad:this.candidato.edad,
+            estado:this.candidato.estado,
+            municipio:this.candidato.municipio,
+
+            colonia:this.candidato.colonia,
+            calle:this.candidato.calle,
+            entre_calles:this.candidato.entre_calles,
+            no_int:this.candidato.no_int,
+            no_ext:this.candidato.no_ext,
+
+            institucion:this.candidato.institucion,
+            grado_escolaridad:this.candidato.grado_escolaridad,
+            fotografia:this.candidato.fotografia,
+            
+            id_tipo_apoyo:this.candidato.id_tipo_apoyo,
+            id_estatus:this.candidato.id_estatus,
+            latitud:this.candidato.latitud,
+            longitud:this.candidato.longitud,
+
+        //  PREGUNTAS ----------------------------------------------------------------
+            pregunta1:this.candidato.pregunta1,
+            pregunta2:this.candidato.pregunta2,
+            pregunta3:this.candidato.pregunta3,
+            pregunta4:this.candidato.pregunta4,
+            pregunta5:this.candidato.pregunta5,
+            pregunta6:this.candidato.pregunta6,
+            pregunta7:this.candidato.pregunta7,
+            pregunta8:this.candidato.pregunta8,
+            pregunta9:this.candidato.pregunta9,
+            pregunta10:this.candidato.pregunta10
+          }
+          var nuevo_id = 0;
+          this.API_candidato.UpdateCandidato(nuevos_datos, this.candidato.id_candidato).subscribe((r)=>{
+            console.log(r.id);
+          });
+
+          // this.API_candidato.updateImage();
           
           var formData = new FormData();
           if (this.selectedFile) {
             formData.append('archivo', this.selectedFile);
-
-            formData.forEach((value, key) => {
-              console.log(`Key: ${key}, Value: ${value}`);
-            });
+            // formData.forEach((value, key) => {console.log(`Key: ${key}, Value: ${value}`);});
             console.log(formData);
           }
           
           
-          // this.API_candidato.UpdateCandidato(this.candidato, 1).subscribe(()=>{});
+          
         }else{
           alert('VERIFIQUE SU UBICACION EN EL MAPA');
         }
@@ -165,14 +204,19 @@ export class EncuestaComponent implements OnInit{
       }
     }else{
       alert('Faltan datos');
+
+      Object.keys(form.controls).forEach(key => {
+        const control = form.controls[key];
+        if (control.errors) {
+          console.log(`- ${key} es un campo requerido.`);
+        }
+      });
     }
     
   }
 
   getMunicipios(estado?:string){
     this.API_extras.getMunicipios(estado??this.candidato.estado).subscribe((r)=>{
-      console.log(r);
-      
       this.municipio_lista = r.municipios;
     });
   }
@@ -191,12 +235,24 @@ export class EncuestaComponent implements OnInit{
           this.candidato.longitud = r.longitud;
 
           this.hay_ubucacion = true;
+
+          this.GetMapa();
         });
+
+      // this.hereMapsService.initializeMap(this.mapElement.nativeElement);
     }else{
       alert('Se requieren datos');
     }
     
   }
+  GetMapa(){
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v12', // style URL
+      center: [this.candidato.longitud, this.candidato.latitud], // starting position [lng, lat]
+      zoom: 32, // starting zoom
+    }
+  )}
 
   onFileChange(event: any) {
     const file = event.target.files[0];
@@ -211,5 +267,30 @@ export class EncuestaComponent implements OnInit{
       reader.readAsDataURL(file);
     }
   }
+
+  valoresPorDefecto(){
+    this.candidato.pregunta10 ={
+      a1:'No',
+      a2:'No',
+      a3:'No',
+      a4:'No',
+      a5:'No',
+      a6:'No',
+      a7:'No',
+      a8:'No',
+      a9:'No'
+    }
+    this.candidato.pregunta1 = 1;
+    this.candidato.pregunta2 ='Casa Propia';
+    this.candidato.pregunta3 ='1';
+    this.candidato.pregunta4 ='1';
+    this.candidato.pregunta5 ='1';
+    this.candidato.pregunta6 ='1';
+    this.candidato.pregunta7 ='1';
+    this.candidato.pregunta8 ='Si';
+    this.candidato.pregunta9 ='Si';
+  }
+
+
   
 }
