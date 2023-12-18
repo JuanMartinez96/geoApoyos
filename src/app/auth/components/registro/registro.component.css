@@ -1,3 +1,4 @@
+/* Estilos del navBar*/
 .navbar {
   background-color: #00548F;
   padding: 20px;
@@ -48,19 +49,6 @@
   height: 20px;
 }
 
-.background-login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 90vh;
-  width: 100%;
-  background-image: url('/assets/backgroundLogin.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-}
 
 .menu-btn {
   cursor: pointer;
@@ -192,3 +180,169 @@ h1 {
   text-align: center;
   color: #7E7E7E;
 }
+
+/*Estilos del formulario */
+.card-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+  margin-top: 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #00548F;
+  font-size: 25px;
+}
+
+.card-logo{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-left: 12px;
+  margin-right: auto;
+}
+
+.col-md6 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.col-md6 label {
+  margin-top: 20px;
+  width: 250px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.col-md6 .label_quikito{
+  width: 75px;
+}
+
+.col-md6 label input {
+  width: 500px;
+  box-sizing: border-box;
+  padding: 8px;
+  margin-bottom: 8px;
+  margin-right: 200px;
+}
+
+#entreCalles {
+  width: 250px;
+  padding-bottom: 50px;
+  flex-direction: column-reverse;
+}
+
+#calle,
+#colonia{
+  width: 150px
+}
+
+#noInt,
+#noExt{
+  width: 100px;
+  }
+
+.direccion-container{
+  justify-content: space-between;
+  display: flex;
+}
+
+.calles-container{
+  width: 250px;
+}
+
+.label_quikito {
+  float: left;
+  margin-right: 40px;
+  margin-bottom: 50px;
+}
+
+.col-md6-imagen {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 5px;
+}
+
+.col-md6-imagen {
+  margin-top: 10px;
+  border: #000 solid 1px;
+  background-color: #00000020;
+  background-repeat: no-repeat;
+  background-position:center;
+  background-size: cover;
+  width: 500px;
+  height: 330px;
+}
+
+.camara-icon {
+  margin-top: 280px;
+  margin-right: 20px;
+}
+
+#nombre::placeholder,
+#edad::placeholder,
+#estado::placeholder,
+#municipio::placeholder,
+#calle::placeholder,
+#colonia::placeholder,
+#entreCalles::placeholder,
+#noInt::placeholder,
+#noExt::placeholder{
+  color: #7E7E7E;
+  font-size: 16px;
+}
+
+
+.col-md6-escolar {
+  display: flex;
+  flex-direction: column;
+  margin-right: 950px;
+}
+
+.col-md6-escolar label {
+  margin-top: 20px;
+  width: 250px;
+}
+
+.col-md6-escolar label input {
+  width: 500px;
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+#nombreInstitucion::placeholder,
+#gradoEscolaridad::placeholder,
+#apoyo::placeholder,
+#estatus::placeholder{
+  color: #00548F;
+  font-size: 16px;
+}
+
+
+button{
+  background-color: #1E91E2;
+  color: white;
+  margin-top: 50px;
+  width: 407px;
+  height: 67px;
+  border: 10px solid;
+  font-size: 20px;
+  border-radius: 20px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+

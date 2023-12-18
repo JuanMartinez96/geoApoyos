@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-pagina-principal',
-  templateUrl: './pagina-principal.component.html',
-  styleUrls: ['./pagina-principal.component.css']
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
-export class PaginaPrincipalComponent {
+export class RegistroComponent {
 
   showMenu = false;
 
@@ -19,7 +18,6 @@ export class PaginaPrincipalComponent {
   toggleMenu() {
     this.showMenu = !this.showMenu;
   }
-
 
 
 }

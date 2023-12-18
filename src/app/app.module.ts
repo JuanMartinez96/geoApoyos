@@ -11,6 +11,9 @@ import { IndexComponent } from './auth/components/index/index.component';
 import { MaterialModule } from './auth/material/material.module';
 import { LoginComponent } from './auth/components/login/login.component';
 import { PaginaPrincipalComponent } from './auth/components/pagina-principal/pagina-principal.component';
+import { RegistroComponent } from './auth/components/registro/registro.component';
+import { PermisosComponent } from './auth/components/permisos/permisos.component';
+import { FormularioVisitaComponent } from './auth/components/formulario-visita/formulario-visita.component';
 
 //COSILLAS PAL BRANDON 7W7
 import { FormsModule } from '@angular/forms';
@@ -27,10 +30,12 @@ import { FiltroPipe } from './auth/components/listaapoyos/filtro.pipe';
     IndexComponent,
     LoginComponent,
     PaginaPrincipalComponent,
-    
     EncuestaComponent,
     ListaapoyosComponent,
     FiltroPipe
+    RegistroComponent,
+    PermisosComponent,
+    FormularioVisitaComponent,
   ],
   imports: [
     //Lo de Angular

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-pagina-principal',
-  templateUrl: './pagina-principal.component.html',
-  styleUrls: ['./pagina-principal.component.css']
+  selector: 'app-formulario-visita',
+  templateUrl: './formulario-visita.component.html',
+  styleUrls: ['./formulario-visita.component.css']
 })
-export class PaginaPrincipalComponent {
+export class FormularioVisitaComponent {
 
   showMenu = false;
 
@@ -19,7 +18,5 @@ export class PaginaPrincipalComponent {
   toggleMenu() {
     this.showMenu = !this.showMenu;
   }
-
-
 
 }
