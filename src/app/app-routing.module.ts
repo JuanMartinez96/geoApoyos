@@ -21,8 +21,13 @@ const routes: Routes = [
     component: PaginaPrincipalComponent
   },
   {
-    path:'encuesta',
+    path: 'encuesta/:id',
+    // path:'encuesta',
     component:EncuestaComponent
+  },
+  {
+    path:'encuesta',
+    component:ListaapoyosComponent
   },
   {
     path:'lista_apoyos',

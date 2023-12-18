@@ -18,6 +18,7 @@ import { EncuestaComponent } from './auth/components/encuesta/encuesta.component
 // ng add @angular/common/http
 import { HttpClientModule } from '@angular/common/http';
 import { ListaapoyosComponent } from './auth/components/listaapoyos/listaapoyos.component';
+import { FiltroPipe } from './auth/components/listaapoyos/filtro.pipe';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ListaapoyosComponent } from './auth/components/listaapoyos/listaapoyos.
     PaginaPrincipalComponent,
     
     EncuestaComponent,
-    ListaapoyosComponent
+    ListaapoyosComponent,
+    FiltroPipe
   ],
   imports: [
     //Lo de Angular

@@ -25,10 +25,14 @@
 
 <div class="p-5 my_background h-100">
 
-  <div class="bg-light p-2 text-center h-50">
+  <div class="bg-light p-2 text-center h-75">
     
     <h2>LISTADO DE CANDIDATOS PARA APOYO
       <button class="btn btn-warning text-light px-4 float-end">Exportar a PDF</button>
+    </h2>
+
+    <h2>
+      <input class="w-75 px-4" type="text" name="filtro" [(ngModel)]="filtro" placeholder="buscar por nombre . . .">
     </h2>
 
     <div class="my_table">
@@ -48,26 +52,38 @@
       
       <tbody class="scroll">
 
-        <tr *ngFor="let item of lista_candidatos, let index = index">
+        <tr *ngFor="let item of lista_candidatos | filtro: filtro ">
           <td>{{item.nombre}}</td>
-          <td>{{item.estatus_apoyo}}</td>
-          <td>{{item.visitado}}</td>
-          <td>{{item.estatus_encuesta}}</td>
+          <td>
+            <div *ngIf="item.estatus_apoyo == 1" class="bg-warning icon_color"></div>
+            <div *ngIf="item.estatus_apoyo == 2" class="bg-success icon_color"></div>
+            <div *ngIf="item.estatus_apoyo == 3" class="bg-danger icon_color"></div>
+            {{apoyos_estatus[item.estatus_apoyo-1]}}
+          </td>
+          <td>{{item.visitado==1 ?'Sí':'No'}}</td>
+          <td>
+            <button class="btn btn-light mx-1 px-1">
+              <i *ngIf="item.estatus_encuesta == 1" class="bi  bi-dash-circle-fill text-success"></i>
+              <i *ngIf="item.estatus_encuesta == 0" class="bi  bi-dash-circle-fill text-warning"></i>
+            </button>
+            {{item.estatus_encuesta == 1 ?'Encuestado':'No Encuestado'}}
+          </td>
           <td>{{item.nombre_usuario}}</td>
           <td>{{obtenerFechaFormateada(item.fecha_visita)}}</td>
           
           <td>
-            <button class="btn btn-primary">
-              <!-- <i class="bi bi-pen"></i> -->
-              <i class="bi bi-clipboard-data-fill"></i>
-            </button>
+            <a href="encuesta/{{item.id_visita}}">
+              <button class="btn btn-primary">
+                <i class="bi bi-clipboard-data-fill"></i>
+              </button>
+            </a>
             <button class="btn btn-light mx-1 px-1">
-              <i class="bi bi-check-lg text-success"></i>
+              <i *ngIf="item.catalogos == 'pendiente'" class="bi  bi-dash-circle-fill text-warning"></i>
+              <i *ngIf="item.catalogos == 'autorizado'" class="bi bi-check-lg text-success"></i>
+              <i *ngIf="item.catalogos == 'rechazado'" class="bi bi-x-circle-fill text-danger"></i>
             </button>
             
-            <!-- <i class="bi bi-dash-circle-fill text-warning"></i>
-            <i class="bi bi-x-circle-fill text-danger"></i> -->
-
+            
             <select  class="p-2 w-50"[(ngModel)]="item.catalogos">
               <option [value]="ap" *ngFor="let ap of apoyos_estatus, let i = index">{{ap}}</option>
             </select>

@@ -52,8 +52,8 @@ export interface I_visita{
     razon:string; //": "comosea",
     id_estatus_encuesta: number;
     fotografia:string; //": "www.google.com.mx",
-    latitud:string; //": "2.200000",
-    longitud:string; //": "-2.200000",
+    latitud:number; //": "2.200000",
+    longitud:number; //": "-2.200000",
     created_at:string; //": "2023-11-24T10:21:30.242Z",
     updated_at:string; //": "2023-11-26T18:36:13.387Z",
     nombre:string; //": "charly modificado",
@@ -63,7 +63,7 @@ export interface I_visita{
     colonia:string; //": "Jardines del Moral",
     calle:string; //": "Jardin del final",
     entre_calles:string; //": "paseo y el otro",
-    no_int:string; //": "217",
+    no_int:number; //": "217",
     no_ext:string; //": "D",
     institucion:string; //": "Guadalupe Pedroza",
     grado_escolaridad:string; //": "Secundaria",
@@ -80,6 +80,7 @@ export interface I_visita{
     pregunta8:string; //": "none",
     pregunta9:string; //": "none",
     pregunta10:Pregunta10;
+    
     correo:string;
     password:string;
     id_rol: number;

@@ -1,8 +1,9 @@
-import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit , ElementRef, ViewChild, Input} from '@angular/core';
+import { Router,ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
-import { I_agregarCandidato } from 'src/app/interfaces/candidatos';
+
+import { I_agregarCandidato, I_visita } from 'src/app/interfaces/candidatos';
 import { S_apoyos } from 'src/app/servicios/apoyos.service';
 import { S_extras } from 'src/app/servicios/extras.service';
 import { S_cadidatos } from 'src/app/servicios/cadidatos.service';
@@ -13,7 +14,18 @@ import { S_cadidatos } from 'src/app/servicios/cadidatos.service';
   styleUrls: ['./encuesta.component.css']
 })
 export class EncuestaComponent implements OnInit{
-  candidato: I_agregarCandidato = {
+  
+  candidato: I_visita = {
+    id_visita:1,
+    id_candidato:1,
+    id_usuario:1,
+    razon:'', //": "comosea",
+    id_estatus_encuesta:1,
+    created_at:'', //": "2023-11-24T10:21:30.242Z",
+    updated_at:'', //": "2023-11-26T18:36:13.387Z",
+
+    // ------------------------------------
+    // candidato: I_agregarCandidato = {
     nombre:"juan",
     edad:27,
     institucion:"utl",
@@ -23,7 +35,6 @@ export class EncuestaComponent implements OnInit{
 
     estado:"",
     municipio:"",
-
     colonia:"ermita",
     calle:"eros",
     entre_calles:"eros",
@@ -53,7 +64,13 @@ export class EncuestaComponent implements OnInit{
       a7:'Si',
       a8:'Si',
       a9:'Si'
-    }
+    },
+
+    correo:'',
+    password:'',
+    id_rol:1,
+    token:'',
+    estatus:1
   }
   hay_ubucacion = false;
   apoyos_lista: string[] = [];
@@ -61,6 +78,7 @@ export class EncuestaComponent implements OnInit{
 
   estado_lista: string[] = [];
   municipio_lista: string[] = [];
+
 
   @ViewChild('fileInput') fileInput: ElementRef | undefined;
   imageUrl: string = '';
@@ -73,7 +91,9 @@ export class EncuestaComponent implements OnInit{
   constructor(
     private API_apoyo: S_apoyos,
     private API_extras: S_extras,
-    private API_candidato: S_cadidatos
+    private API_candidato: S_cadidatos,
+    private route: ActivatedRoute,
+    private router: Router
   ){
     
     
@@ -82,7 +102,8 @@ export class EncuestaComponent implements OnInit{
     this.API_extras.getEstados().subscribe((r)=>{
       this.estado_lista = r.estados;
       this.candidato.estado = r.estados[0];
-      this.getMunicipios();
+      
+      
     });
     
     this.API_apoyo.getApoyos().subscribe((r)=>{
@@ -92,6 +113,22 @@ export class EncuestaComponent implements OnInit{
     this.API_apoyo.getApoyosStatus().subscribe((r)=>{
       this.apoyos_estatus = r.apoyo_estatus;
       this.candidato.id_estatus = 1;
+    });
+
+    this.route.params.subscribe(params => {
+      
+      const id = +params['id'];
+
+      if (isNaN(id)) {
+        this.router.navigate(['/lista_apoyos']);
+      }else{
+        this.API_candidato.GetCandidatoVisita(id).subscribe((r)=>{
+          this.candidato = r.result[0];
+          this.getMunicipios(this.candidato.estado);
+        });
+      }
+      
+
     });
   }
 
@@ -132,8 +169,10 @@ export class EncuestaComponent implements OnInit{
     
   }
 
-  getMunicipios(){
-    this.API_extras.getMunicipios(this.candidato.estado).subscribe((r)=>{
+  getMunicipios(estado?:string){
+    this.API_extras.getMunicipios(estado??this.candidato.estado).subscribe((r)=>{
+      console.log(r);
+      
       this.municipio_lista = r.municipios;
     });
   }

@@ -114,12 +114,26 @@ thead tr th{
 
 
 
-
+input{
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #000;
+  font-size: large;
+  color:#00000080;
+}
 select{
   border: none;
   border-radius: 3px;
   background: #FFF;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.icon_color{
+  margin: 0px 16px;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
 }
 
 /* ------------------------------------------------------------------------------------ */
@@ -161,13 +175,7 @@ h1{
   word-wrap: break-word;
   
 }
-input,select {
-  border: none;
-  outline: none;
-  border-bottom: 1px solid #000;
-  font-size: large;
-  color:#00000080;
-}
+
 .bg-azul_2{background-color: #00548F;}
 .button_blue2{
   background-color: #00548F;
