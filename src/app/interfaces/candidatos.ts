@@ -1,8 +1,8 @@
 export interface R_Candidatos {
-    cantidatos:cantidato[];
+    candidatos:candidatos[];
 }
 
-export interface cantidato {
+export interface candidatos {
     id_candidato: number;
     nombre: string;
     edad: number;
@@ -18,7 +18,7 @@ export interface cantidato {
     institucion: string;
     grado_escolaridad: string;
     id_tipo_apoyo: number;
-    id_estatus_apoyo: number;
+    id_estatus: number;
     fotografia: string;
 
     created_at: string;
@@ -52,8 +52,8 @@ export interface I_visita{
     razon:string; //": "comosea",
     id_estatus_encuesta: number;
     fotografia:string; //": "www.google.com.mx",
-    latitud:string; //": "2.200000",
-    longitud:string; //": "-2.200000",
+    latitud:number; //": "2.200000",
+    longitud:number; //": "-2.200000",
     created_at:string; //": "2023-11-24T10:21:30.242Z",
     updated_at:string; //": "2023-11-26T18:36:13.387Z",
     nombre:string; //": "charly modificado",
@@ -63,7 +63,7 @@ export interface I_visita{
     colonia:string; //": "Jardines del Moral",
     calle:string; //": "Jardin del final",
     entre_calles:string; //": "paseo y el otro",
-    no_int:string; //": "217",
+    no_int:number; //": "217",
     no_ext:string; //": "D",
     institucion:string; //": "Guadalupe Pedroza",
     grado_escolaridad:string; //": "Secundaria",
@@ -80,11 +80,26 @@ export interface I_visita{
     pregunta8:string; //": "none",
     pregunta9:string; //": "none",
     pregunta10:Pregunta10;
+    
     correo:string;
     password:string;
     id_rol: number;
     token:string;
     estatus: number;
+}
+export interface visitas{
+    visitas:visita[]
+}
+export interface visita{
+    id_visita: number,
+    estatus_apoyo: number,
+    visitado: number,
+    estatus_encuesta: number,
+
+    nombre: string,
+    nombre_usuario: string,
+    fecha_visita: string,
+    catalogos: string
 }
 
 export interface Pregunta10{
@@ -92,12 +107,15 @@ export interface Pregunta10{
     a1:string;
     a2:string;
     a3:string;
-    a4:string;
 
+    a4:string;
     a5:string;
     a6:string;
+
     a7:string;
     a8:string;
+    a9:string;
+
 }
 
 // INSERTAR CANDIDATO
@@ -107,30 +125,33 @@ export interface I_agregarCandidato{
     edad:number;
     estado:string;
     municipio:string;
+
     colonia:string;
     calle:string;
     entre_calles:string;
     no_int:number;
+
     no_ext:string;
     institucion:string;
     grado_escolaridad:string;
     fotografia:string;
+    
     id_tipo_apoyo:number;
     id_estatus:number;
     latitud:number;
     longitud:number;
 
 //  PREGUNTAS ----------------------------------------------------------------
-    pregunta1: number;
-    pregunta2:string; //": "none",
-    pregunta3:string; //": "none",
-    pregunta4:string; //": "none",
-    pregunta5:string; //": "none",
-    pregunta6:string; //": "none",
-    pregunta7:string; //": "none",
-    pregunta8:string; //": "none",
-    pregunta9:string; //": "none",
-    pregunta10:Pregunta10;
+    pregunta1 :number;
+    pregunta2 :string; //": "none",
+    pregunta3 :string; //": "none",
+    pregunta4 :string; //": "none",
+    pregunta5 :string; //": "none",
+    pregunta6 :string; //": "none",
+    pregunta7 :string; //": "none",
+    pregunta8 :string; //": "none",
+    pregunta9 :string; //": "none",
+    pregunta10 :Pregunta10;
 }
 
 

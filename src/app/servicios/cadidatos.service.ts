@@ -4,16 +4,20 @@ import { Observable } from 'rxjs';
 
 
 import { I_mensaje,I_mensaje2 } from '../interfaces/mensaje';
-import { R_Candidatos,R_CandidatoVisita, I_agregarCandidato ,I_agregarVisita,UpdateStatus} from '../interfaces/candidatos';
+import { R_Candidatos,R_CandidatoVisita, I_agregarCandidato ,I_agregarVisita,UpdateStatus, visitas} from '../interfaces/candidatos';
 
 @Injectable({providedIn: 'root',})
 
 
 
-export class cadidatos{
+export class S_cadidatos{
     // public URL = ConfiguracionesComponent.apiUrl;
-    public URL = "ConfiguracionesComponent.apiUrl";
+    public URL = "https://prototipo2023-d6240700184c.herokuapp.com/";
     constructor(private http: HttpClient) { }
+
+    GetVisitas(): Observable<visitas>{
+        return this.http.get<visitas>(`${this.URL}api/candidatos/visitas`);
+    }
 
     GetCandidatos(): Observable<R_Candidatos>{
         return this.http.get<R_Candidatos>(`${this.URL}api/candidatos`);
@@ -37,6 +41,14 @@ export class cadidatos{
     }
     UpdateCandidato(nuevos_datos:I_agregarCandidato, id:number): Observable<I_mensaje>{
         return this.http.post<I_mensaje>(`${this.URL}api/candidatos/${id}`,nuevos_datos);
+    }
+
+
+    updateImage(data: FormData, id: number): Observable<any> {
+        return this.http.put<any>(`${this.URL}/api/uploads/visitas/${id}`, data);
+    }
+    getImage(id: number): Observable<any> {
+        return this.http.get<any>(`${this.URL}/api/uploads/visitas/${id}`)
     }
 
 }

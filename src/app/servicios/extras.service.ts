@@ -8,9 +8,9 @@ import { R_estados,R_municipios,R_verificarConexion,R_serviciosExtra_Coordenadar
 
 
 
-export class extras {
+export class S_extras {
     // public URL = ConfiguracionesComponent.apiUrl;
-    public URL = "ConfiguracionesComponent.apiUrl";
+    public URL = "https://prototipo2023-d6240700184c.herokuapp.com/";
     constructor(private http: HttpClient) { }
 
     
@@ -25,7 +25,7 @@ export class extras {
     getVerificaConexion(): Observable<R_verificarConexion>{
         return this.http.get<R_verificarConexion>(`${this.URL}api/services/verificarConexion`);
     }
-    getMunicipiosd(direccion:I_serviciosExtra_Coordenadar):Observable<R_serviciosExtra_Coordenadar>{
+    getCoordenadar(direccion:I_serviciosExtra_Coordenadar):Observable<R_serviciosExtra_Coordenadar>{
         return this.http.post<R_serviciosExtra_Coordenadar>(`${this.URL}api/services/0`,direccion);
     }
 

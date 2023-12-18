@@ -1,6 +1,6 @@
 export interface R_apoyos {
-    msg:String[];
+    apoyo:string[];
 }
 export interface R_ApoyosStatus {
-    msg:String[];
+    apoyo_estatus:string[];
 }

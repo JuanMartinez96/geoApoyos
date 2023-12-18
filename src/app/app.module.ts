@@ -15,7 +15,13 @@ import { RegistroComponent } from './auth/components/registro/registro.component
 import { PermisosComponent } from './auth/components/permisos/permisos.component';
 import { FormularioVisitaComponent } from './auth/components/formulario-visita/formulario-visita.component';
 
-
+//COSILLAS PAL BRANDON 7W7
+import { FormsModule } from '@angular/forms';
+import { EncuestaComponent } from './auth/components/encuesta/encuesta.component';
+// ng add @angular/common/http
+import { HttpClientModule } from '@angular/common/http';
+import { ListaapoyosComponent } from './auth/components/listaapoyos/listaapoyos.component';
+import { FiltroPipe } from './auth/components/listaapoyos/filtro.pipe';
 
 
 @NgModule({
@@ -24,6 +30,9 @@ import { FormularioVisitaComponent } from './auth/components/formulario-visita/f
     IndexComponent,
     LoginComponent,
     PaginaPrincipalComponent,
+    EncuestaComponent,
+    ListaapoyosComponent,
+    FiltroPipe
     RegistroComponent,
     PermisosComponent,
     FormularioVisitaComponent,
@@ -38,6 +47,9 @@ import { FormularioVisitaComponent } from './auth/components/formulario-visita/f
     AppRoutingModule,
     MaterialModule,
 
+    //COSILLAS PAL BRANDON 7W7
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
