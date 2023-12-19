@@ -39,16 +39,16 @@ export class S_cadidatos{
     UpdateCandidatoStatus(estado:UpdateStatus,id:number): Observable<I_mensaje2>{
         return this.http.post<I_mensaje2>(`${this.URL}api/candidatos/apoyo/{id}`,estado);
     }
-    UpdateCandidato(nuevos_datos:I_agregarCandidato, id:number): Observable<I_mensaje>{
-        return this.http.post<I_mensaje>(`${this.URL}api/candidatos/${id}`,nuevos_datos);
+    UpdateCandidato(nuevos_datos:I_agregarCandidato, id:number): Observable<I_mensaje2>{
+        return this.http.post<I_mensaje2>(`${this.URL}api/candidatos/${id}`,nuevos_datos);
     }
 
 
     updateImage(data: FormData, id: number): Observable<any> {
-        return this.http.put<any>(`${this.URL}/api/uploads/visitas/${id}`, data);
+        return this.http.put<any>(`${this.URL}api/uploads/visitas/${id}`, data);
     }
     getImage(id: number): Observable<any> {
-        return this.http.get<any>(`${this.URL}/api/uploads/visitas/${id}`)
+        return this.http.get<any>(`${this.URL}api/uploads/visitas/${id}`)
     }
 
 }
