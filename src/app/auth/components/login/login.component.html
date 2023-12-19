@@ -1,5 +1,4 @@
 <nav class="navbar">
-  <!-- Aquí colocarías los elementos de tu navbar, como enlaces, logotipo, etc. -->
 </nav>
 
 <div class="background-login">
@@ -10,13 +9,38 @@
       <h2>Iniciar sesion</h2>
 
       <div class="form-group">
-        <form >
+        <form [formGroup]="myForm" autocomplete="off">
         <label for="email" class="icon-label">
-          <input type="email" id="email" name="email" placeholder="Correo Electrónico">
+          <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Correo Electrónico"
+          formControlName="email"
+
+          >
+          <span *ngIf="myForm.controls['email'].getError('required') && myForm.controls['email'].touched">
+            Este campo es requerido
+          </span>
+          <span *ngIf="myForm.controls['email'].getError('minlength') && myForm.controls['email'].touched">
+            Este campo necesita 3 caracteres minimo y 20 maximo
+          </span>
         </label>
         <br>
         <label for="password" class="icon-label password-label">
-          <input type="password" id="password" name="password" placeholder="Contraseña">
+          <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Contraseña"
+          formControlName="password"
+          >
+          <span *ngIf="myForm.controls['password'].getError('required') && myForm.controls['password'].touched">
+            Este campo es requerido
+          </span>
+          <span *ngIf="myForm.controls['password'].getError('minlength') && myForm.controls['password'].touched">
+            Este campo necesita un correo existente
+          </span>
         </label>
         <h3 class="forgot-password">¿Olvidaste tu contraseña?</h3>
         <h4 class="recover">Recuperar</h4>

@@ -32,7 +32,7 @@ import { FiltroPipe } from './auth/components/listaapoyos/filtro.pipe';
     PaginaPrincipalComponent,
     EncuestaComponent,
     ListaapoyosComponent,
-    FiltroPipe
+    FiltroPipe,
     RegistroComponent,
     PermisosComponent,
     FormularioVisitaComponent,

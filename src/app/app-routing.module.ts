@@ -36,6 +36,7 @@ const routes: Routes = [
     path:'lista_apoyos',
     component:ListaapoyosComponent
   },
+  {
     path: 'registro',
     component: RegistroComponent
   },
