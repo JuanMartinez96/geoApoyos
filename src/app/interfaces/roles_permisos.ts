@@ -1,6 +1,7 @@
 export interface R_roles {
-    roles:String[];
+    roles: string[];
 }
+
 export interface R_permisos {
-    permisos:String[];
+    permisos:string[];
 }

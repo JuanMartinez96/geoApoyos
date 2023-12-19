@@ -1,7 +1,10 @@
 export interface R_usuarios {
+    nombre: string | null;
     usuarios:I_usuario[];
+    id_rol?:number;
 }
 export interface I_usuario {
+    roles: any;
     id_usuario?: number;
     nombre: String;
     correo: String;

@@ -13,7 +13,7 @@ export class S_apoyos {
     public URL = "https://prototipo2023-d6240700184c.herokuapp.com/";
     constructor(private http: HttpClient) { }
 
-    
+
     getApoyos(): Observable<R_apoyos>{
         return this.http.get<R_apoyos>(`${this.URL}api/apoyo`);
     }
