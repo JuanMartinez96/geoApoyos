@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
-import { I_mensaje,I_mensaje2 } from '../interfaces/mensaje';
+import { I_mensaje,I_mensaje2, I_mensaje3 } from '../interfaces/mensaje';
 import { R_Candidatos,R_CandidatoVisita, I_agregarCandidato ,I_agregarVisita,UpdateStatus, visitas} from '../interfaces/candidatos';
 
 @Injectable({providedIn: 'root',})
@@ -27,8 +27,8 @@ export class S_cadidatos{
     }
 
 
-    InsertCandidatos(candidato:I_agregarCandidato): Observable<I_mensaje>{
-        return this.http.post<I_mensaje>(`${this.URL}api/candidatos`,candidato);
+    InsertCandidatos(candidato:I_agregarCandidato): Observable<I_mensaje3>{
+        return this.http.post<I_mensaje3>(`${this.URL}api/candidatos`,candidato);
     }
     InsertVisita(usuario:I_agregarVisita, id:number): Observable<I_mensaje>{
         return this.http.post<I_mensaje>(`${this.URL}api/candidatos/visita/${id}`,usuario);
@@ -44,8 +44,8 @@ export class S_cadidatos{
     }
 
 
-    updateImage(data: FormData, id: number): Observable<any> {
-        return this.http.put<any>(`${this.URL}api/uploads/visitas/${id}`, data);
+    updateImage(data: FormData, id: number, que_guardo:string): Observable<any> {
+        return this.http.put<any>(`${this.URL}api/uploads/${que_guardo}/${id}`, data);
     }
     getImage(id: number): Observable<any> {
         return this.http.get<any>(`${this.URL}api/uploads/visitas/${id}`)

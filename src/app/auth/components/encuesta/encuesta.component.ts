@@ -155,7 +155,7 @@ export class EncuestaComponent implements OnInit{
             colonia:this.candidato.colonia,
             calle:this.candidato.calle,
             entre_calles:this.candidato.entre_calles,
-            no_int:this.candidato.no_int,
+            no_int:''+this.candidato.no_int,
             no_ext:this.candidato.no_ext,
 
             institucion:this.candidato.institucion,

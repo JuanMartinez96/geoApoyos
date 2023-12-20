@@ -50,7 +50,7 @@
 </div>
 
 
-<div class="card-menu">
+<form class="card-menu" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" enctype="multipart/form-data">
   <h2>SOLICITUD DE ALTA</h2>
 
   <div class="card-logo">
@@ -61,34 +61,50 @@
   <div class="col-md6">
     <div class="input-container">
       <label for="nombre">
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="formulario.nombre" placeholder="Nombre">
       </label>
       <label for="edad">
-        <input type="number" id="edad" name="edad" placeholder="Edad">
+        <input type="number" id="edad" name="edad" [(ngModel)]="formulario.edad" placeholder="Edad">
       </label>
-      <label for="estado">
-        <input type="text" id="estado" name="estado" placeholder="Estado">
+      <!-- <label for="estado">
+        <input type="text" id="estado" name="estado" [(ngModel)]="formulario.estado" placeholder="Estado">
+      </label> -->
+      <label id="estado">
+        <select class="p-4 w-100"  name="estado" [(ngModel)]="formulario.estado"
+          (change)="getMunicipios()">
+          <option  [value]="e" *ngFor="let e of estado_lista">{{e}}</option>
+        </select>
       </label>
-      <label for="municipio">
-        <input type="text" id="municipio" name="municipio" placeholder="Municipio">
+      
+
+      <!-- <label for="municipio">
+        <input type="text" id="municipio" name="municipio" [(ngModel)]="formulario.municipio" placeholder="Municipio">
+      </label> -->
+      <label id="municipio">
+        <select class="p-4 w-100"  name="estado" [(ngModel)]="formulario.municipio">
+          <option  [value]="m" *ngFor="let m of municipio_lista">{{m}}</option>
+        </select>
       </label>
+      <br>
+
+
       <div class="direccion-container">
 
 
         <div class="calles-container">
           <label for="calle">
-            <input type="number" id="calle" name="calle" placeholder="Calle">
+            <input type="text" id="calle" name="calle" [(ngModel)]="formulario.calle" placeholder="Calle">
           </label>
           <label for="colonia">
-            <input type="text" id="colonia" name="colonia" placeholder="Colonia">
+            <input type="text" id="colonia" name="colonia" [(ngModel)]="formulario.colonia" placeholder="Colonia">
           </label>
 
           <div class="numeros-container">
             <label class="label_quikito" for="noInt">
-              <input type="number" id="noInt" name="noInt" placeholder="No. Int">
+              <input type="text" id="noInt" name="noInt" [(ngModel)]="formulario.no_int" placeholder="No. Int">
             </label>
             <label class="label_quikito" for="noExt">
-              <input type="number" id="noExt" name="noExt" placeholder="No. Ext">
+              <input type="text" id="noExt" name="noExt" [(ngModel)]="formulario.no_ext" placeholder="No. Ext">
             </label>
           </div>
 
@@ -96,30 +112,66 @@
 
         <div>
           <label for="entreCalles">
-            <input type="text" id="entreCalles" name="entreCalles" placeholder="Entre Calles">
+            <input type="text" id="entreCalles" name="entre_calles" [(ngModel)]="formulario.entre_calles" placeholder="Entre Calles">
           </label>
         </div>
       </div>
     </div>
 
-    <div class="col-md6-imagen">
-        <img src="/assets/camara.png" alt="Imagen" class="camara-icon">
+    <div class="col-md6-imagen tarjeta-foto" 
+        [style.background-image]=" imageUrl != ''?'url(' + imageUrl + ')' :''">
+
+        <div class="btn botton-foto ">
+          <input *ngIf="imageUrl == ''"
+            type="file" name="archivo" id="fileInput" accept=".jpg, .jpeg, .png"
+            (change)="onFileChange($event)" #fileInput required ngModel>
+          <label for="fileInput">
+            <span class="icon"><img src="/assets/camara.png" alt="Imagen" class="camara-icon"></span>
+          </label>
+        </div>
+      <!-- <img class="w-100" [src]="imageUrl" alt="Imagen seleccionada" *ngIf="imageUrl"> -->
+
+      <h4 class="mensaje"><span>{{ mensaje }}</span></h4>
+
     </div>
   </div>
 
   <div class="col-md6-escolar">
     <label for="nombreInstitucion">
-      <input type="text" id="nombreInstitucion" name="nombreInstitucion" placeholder="Nombre de la institucion">
+      <input type="text" id="nombreInstitucion" name="institucion"
+        [(ngModel)]="formulario.institucion"
+        placeholder="Nombre de la institucion">
     </label>
-    <label for="gradoEscolaridad">
-      <input type="number" id="gradoEscolaridad" name="gradoEscolaridad" placeholder="Grado de escolaridad">
+    <!-- <label for="gradoEscolaridad">
+      <input type="number" id="gradoEscolaridad" name="grado_escolaridad"
+        [(ngModel)]="formulario.grado_escolaridad"
+        placeholder="Grado de escolaridad">
+    </label> -->
+
+    <label id="gradoEscolaridad">
+      <select class="p-4 w-100"  name="grado_escolaridad" [(ngModel)]="formulario.grado_escolaridad">
+        <option value="Secundaria">Secundaria</option>
+        <option value="Preparatoria">Preparatoria</option>
+        <option value="TSU">TSU</option>
+      </select>
     </label>
-    <label for="apoyo">
-      <input type="text" id="apoyo" name="apoyo" placeholder="Apoyos">
+
+
+    <label id="apoyo">
+      <select class="p-4 w-100"  name="apoyo" [(ngModel)]="formulario.id_tipo_apoyo">
+        <option  [value]="(1)" >{{apoyos_lista[0]}}</option>
+        <option  [value]="(2)" >{{apoyos_lista[1]}}</option>
+        <option  [value]="(3)" >{{apoyos_lista[2]}}</option>
+
+      </select>
     </label>
-    <label for="estatus">
-      <input type="text" id="estatus" name="estatus" placeholder="Esatus">
+    <label id="estatus">
+      <select class="p-4 w-100"  name="estatus" [(ngModel)]="formulario.id_estatus" disabled>
+        <option  [value]="i+1" *ngFor="let m of apoyos_estatus, let i = index">{{m}}</option>
+      </select>
     </label>
+
+
   </div>
 
   <div class="button">
@@ -127,6 +179,6 @@
       Registrar
     </button>
   </div>
-</div>
+</form>
 
 

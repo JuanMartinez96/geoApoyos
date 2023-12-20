@@ -129,7 +129,7 @@ export interface I_agregarCandidato{
     colonia:string;
     calle:string;
     entre_calles:string;
-    no_int:number;
+    no_int:string;
 
     no_ext:string;
     institucion:string;

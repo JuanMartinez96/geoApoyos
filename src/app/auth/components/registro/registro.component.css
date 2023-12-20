@@ -346,3 +346,53 @@ button{
   transition: background-color 0.3s ease;
 }
 
+/* ------------------------------------------------ */
+#estado, #municipio{
+  width: 71%;
+  padding: 0px 0px;
+}
+#apoyo , #estatus,#gradoEscolaridad{
+  width: 200%;
+  padding: 0px 0px;
+}
+#estado select, #municipio select,#apoyo select, #estatus select,#gradoEscolaridad select{
+  width: 100%;
+  padding: 8px 8px;
+}
+#fileInput{
+  display: none;
+}
+.tarjeta-foto{
+  /* position: absolute; */
+/* width: 100%;
+height: 100%; */
+  border-radius: 6px;
+  padding: auto;
+
+  background-color: #00000020;
+
+  background-repeat: no-repeat;
+  background-position:center;
+  background-size: cover;
+}
+.botton-foto{
+  position: relative; 
+  top:calc(-8px);
+  left: calc(-8px); 
+}
+.botton-foto .label {
+  cursor: pointer;
+}
+
+.button_blue2{
+  background-color: #00548F;
+  color: white;
+}
+.button_blue2:hover{
+  background-color: #003571;
+  color: white;
+}
+.mensaje{
+  color: red;
+  padding: 32px 64px;
+}
