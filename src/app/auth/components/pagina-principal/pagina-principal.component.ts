@@ -13,8 +13,6 @@ import { S_auth } from 'src/app/servicios/auth.service';
 export class PaginaPrincipalComponent implements OnInit{
 
   showMenu = false;
-  nombre:  string[] = [];
-  roles: string[] = [];
 
   menuItems = [
     { label: 'Registro de\nCandidatos', link: '/registro', backgroundColor: '#00548F', icon: '/assets/libro.png' },

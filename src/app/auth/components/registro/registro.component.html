@@ -4,13 +4,13 @@
   </div>
   <div class="right-section">
     <div class="user-info">
-      <img src="/assets/.jpg" alt="User Photo" class="user-photo">
+      <img src="/assets/usuarioNavBar.png" alt="foto-usuario" class="user-photo">
       <div class="user-details">
-        <p class="user-name">Cesar rincon</p>
-        <p class="user-permission">Administrador</p>
+        <p class="user-name">{{loggedInUser?.nombre}}</p>
+          <p class="user-permission"></p>
       </div>
     </div>
-    <img src="/assets/salir.png" alt="Cerrar Sesión" class="icon">
+    <img src="/assets/salir.png"  (click)="logout()" alt="Cerrar Sesión" class="icon">
     <div class="menu-btn" (click)="toggleMenu()">
       <img src="/assets/menu.png" alt="Menú">
     </div>
@@ -41,7 +41,7 @@
       </ul>
 
       <div class="logout-container">
-        <img src="/assets/logoutp.png" alt="Logout Icon" class="logout-icon">
+        <img src="/assets/logoutp.png" (click)="logout()" alt="Logout Icon" class="logout-icon">
         <span>Cerrar Sesión</span>
       </div>
 

@@ -14,7 +14,7 @@ export class usuarios {
     public URL = "https://prototipo2023-d6240700184c.herokuapp.com/";
     constructor(private http: HttpClient) { }
 
-    
+
     GetUsuarios(): Observable<R_usuarios>{
         return this.http.get<R_usuarios>(`${this.URL}api/usuarios`);
     }
@@ -30,11 +30,9 @@ export class usuarios {
     UpdatePassword(nueva_pass:UsuarioUpdatePassword, id:number): Observable<I_mensaje>{
         return this.http.put<I_mensaje>(`${this.URL}api/cambiarPass/${id}`,nueva_pass);
     }
-    
+
     Borrar(usuario:UsuarioDelete, id:number): Observable<I_mensaje>{
         return this.http.post<I_mensaje>(`${this.URL}api/usuarios/${id}`,usuario);
-        // ESTE DEBERIA SER EL BUENO
-        // return this.http.delete<I_mensaje>(`${this.URL}api/usuarios/${id}`,usuario);
     }
 
 

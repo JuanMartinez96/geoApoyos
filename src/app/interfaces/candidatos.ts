@@ -80,7 +80,7 @@ export interface I_visita{
     pregunta8:string; //": "none",
     pregunta9:string; //": "none",
     pregunta10:Pregunta10;
-    
+
     correo:string;
     password:string;
     id_rol: number;
@@ -88,6 +88,7 @@ export interface I_visita{
     estatus: number;
 }
 export interface visitas{
+    length: number;
     visitas:visita[]
 }
 export interface visita{
@@ -135,7 +136,7 @@ export interface I_agregarCandidato{
     institucion:string;
     grado_escolaridad:string;
     fotografia:string;
-    
+
     id_tipo_apoyo:number;
     id_estatus:number;
     latitud:number;

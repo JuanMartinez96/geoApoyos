@@ -37,6 +37,7 @@
 .user-name,
 .user-permission {
   margin: 0;
+  margin-right: 20px;
 }
 
 .right-section {
@@ -46,6 +47,7 @@
 
 .icon {
   height: 20px;
+  cursor: pointer;
 }
 
 .background-login {
@@ -182,6 +184,7 @@ h1 {
 .logout-icon {
   width: 30px;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .logout-container span {
@@ -262,3 +265,34 @@ h2 {
   cursor: pointer;
 }
 
+.formulario-visitas select {
+  width: 430px;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.boton-visitas button,
+.boton-lista button {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 10px;
+  width: 310px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.boton-visitas button {
+  background-color: #1e91e2;
+  border: #1e91e2 10px;
+}
+
+.boton-lista button {
+  background-color: #e21e5d;
+  border: #e21e5d 10px;
+}

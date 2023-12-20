@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -6,6 +7,9 @@ import { I_agregarCandidato } from 'src/app/interfaces/candidatos';
 import { S_apoyos } from 'src/app/servicios/apoyos.service';
 import { S_cadidatos } from 'src/app/servicios/cadidatos.service';
 import { S_extras } from 'src/app/servicios/extras.service';
+
+import { R_usuarios } from 'src/app/interfaces/usuarios';
+import { S_auth } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -15,6 +19,7 @@ import { S_extras } from 'src/app/servicios/extras.service';
 export class RegistroComponent {
 
   showMenu = false;
+  loggedInUser: R_usuarios | null = null;
 
   menuItems = [
     { label: 'Registro de\nCandidatos', link: '/registro', backgroundColor: '#00548F', icon: '/assets/libro.png' },
@@ -84,10 +89,25 @@ export class RegistroComponent {
     private API_extras: S_extras,
     private API_apoyo: S_apoyos,
     private API_candidato:S_cadidatos,
-    private router: Router
+    private router: Router,
+    public authService: S_auth
   ){}
 
   ngOnInit(){
+    const loggedInUser: R_usuarios = this.authService.getLoggedInUser();
+
+    if (loggedInUser) {
+      const userNameElement = document.querySelector('.user-name');
+      if (userNameElement) {
+        userNameElement.textContent = loggedInUser.nombre;
+      }
+      const userPermissionElement = document.querySelector('.user-permission');
+      if (userPermissionElement && loggedInUser && loggedInUser.id_rol !== undefined) {
+        userPermissionElement.textContent = loggedInUser.id_rol.toString();
+      }
+    }
+
+
     this.API_extras.getEstados().subscribe((r)=>{
       this.estado_lista = r.estados;
       this.formulario.estado = r.estados[0];
@@ -148,4 +168,15 @@ export class RegistroComponent {
     }
   }
 
+
+  logout() {
+    const userId = 3;
+
+    this.authService.logout(userId).subscribe(
+      (response) => {
+        console.log('Logout exitoso:', response);
+        this.router.navigate(['/login']);
+      },
+    );
+  }
 }
