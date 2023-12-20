@@ -17,16 +17,9 @@ import * as mapboxgl from 'mapbox-gl';
   styleUrls: ['./encuesta.component.css']
 })
 export class EncuestaComponent implements OnInit{
-  
-  candidato: I_visita = {
-    id_visita:1,
-    id_candidato:1,
-    id_usuario:1,
-    razon:'', //": "comosea",
-    id_estatus_encuesta:1,
-    created_at:'', //": "2023-11-24T10:21:30.242Z",
-    updated_at:'', //": "2023-11-26T18:36:13.387Z",
-
+  id_candidato:number = 0;
+  candidato: I_agregarCandidato = {
+    
     // ------------------------------------
     // candidato: I_agregarCandidato = {
     nombre:"juan",
@@ -38,13 +31,13 @@ export class EncuestaComponent implements OnInit{
 
     estado:"",
     municipio:"",
-    colonia:"ermita",
-    calle:"eros",
-    entre_calles:"eros",
-    no_int:1,
-    no_ext:"2011",
+    colonia:"",
+    calle:"",
+    entre_calles:"",
+    no_int:"",
+    no_ext:"",
     
-    fotografia:"string",
+    fotografia:"",
     latitud:0,
     longitud:0,
 
@@ -67,13 +60,13 @@ export class EncuestaComponent implements OnInit{
       a7:'Si',
       a8:'Si',
       a9:'Si'
-    },
+    }
 
-    correo:'',
-    password:'',
-    id_rol:1,
-    token:'',
-    estatus:1
+    // correo:'',
+    // password:'',
+    // id_rol:1,
+    // token:'',
+    // estatus:1
   }
   hay_ubucacion = false;
   apoyos_lista: string[] = [];
@@ -120,13 +113,14 @@ export class EncuestaComponent implements OnInit{
     this.route.params.subscribe(params => {
       
       const id = +params['id'];
-
+      this.id_candidato = id;
       if (isNaN(id)) {
-        this.router.navigate(['/lista_apoyos']);
+        this.router.navigate(['/listaApoyos']);
       }else{
-        this.API_candidato.GetCandidatoVisita(id).subscribe((r)=>{
-          this.candidato = r.result[0];
-          this.imageUrl = 'https://prototipo2023-d6240700184c.herokuapp.com/api/uploads/visitas/'+this.candidato.id_visita;
+        this.API_candidato.GetCandidatos().subscribe((r)=>{
+          // .find(candidato => candidato.id_candidato === idBuscado);
+          this.candidato = r.candidatos.find(c => c.id_candidato == id) ?? this.candidato;
+          this.imageUrl = 'https://prototipo2023-d6240700184c.herokuapp.com/api/uploads/candidatos/'+this.id_candidato;
           this.valoresPorDefecto();
           this.getMunicipios(this.candidato.estado);
         });
@@ -179,20 +173,15 @@ export class EncuestaComponent implements OnInit{
             pregunta9:this.candidato.pregunta9,
             pregunta10:this.candidato.pregunta10
           }
-          var nuevo_id = 0;
-          this.API_candidato.UpdateCandidato(nuevos_datos, this.candidato.id_candidato).subscribe((r)=>{
-            console.log(r.id);
-          });
 
-          // this.API_candidato.updateImage();
-          
-          var formData = new FormData();
-          if (this.selectedFile) {
+          this.API_candidato.UpdateCandidato(nuevos_datos, this.id_candidato).subscribe((r)=>{
+            var formData = new FormData();
             formData.append('archivo', this.selectedFile);
-            // formData.forEach((value, key) => {console.log(`Key: ${key}, Value: ${value}`);});
-            console.log(formData);
-          }
-          
+
+            this.API_candidato.updateImage(formData,r.id,'candidatos').subscribe((rr)=>{
+              console.log(rr);
+            });
+          });
           
           
         }else{

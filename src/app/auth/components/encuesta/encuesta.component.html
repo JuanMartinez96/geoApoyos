@@ -83,17 +83,19 @@
         [style.background-image]="
           imageUrl != ''?
           'url(' + imageUrl + ')' :
-          'url(https://prototipo2023-d6240700184c.herokuapp.com/api/uploads/candidatos/'+candidato.id_visita+')'"
+          'url(https://prototipo2023-d6240700184c.herokuapp.com/api/uploads/candidatos/'+id_candidato+')'"
         >
 
         <div class="btn botton-foto button_blue2 bg-azul_2">
-          <input *ngIf="imageUrl == ''"
-            type="file" name="foto" id="fileInput" class="d-none" accept=".jpg, .jpeg, .png"
+          <input 
+            type="file" name="archivo" id="fileInput" class="d-none" accept=".jpg, .jpeg, .png"
             (change)="onFileChange($event)" #fileInput required>
           <label for="fileInput">
             <span class="icon"><i class="bi bi-camera-fill"></i></span>
           </label>
         </div>
+
+
         <!-- <img class="w-100" [src]="imageUrl" alt="Imagen seleccionada" *ngIf="imageUrl"> -->
 
       </div>

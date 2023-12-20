@@ -22,6 +22,10 @@ import { EncuestaComponent } from './auth/components/encuesta/encuesta.component
 // NOP --> npm install @here/maps-api-for-javascript
 // npm install mapbox-gl
 // npm install @types/mapbox-gl
+// npm install jspdf
+// npm install --save-dev @types/jspdf
+// npm install jspdf-autotable
+
 import { HttpClientModule } from '@angular/common/http';
 import { ListaapoyosComponent } from './auth/components/listaapoyos/listaapoyos.component';
 import { FiltroPipe } from './auth/components/listaapoyos/filtro.pipe';

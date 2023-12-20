@@ -2,8 +2,10 @@ import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import * as jsPDF from 'jspdf';
+// import JSPDF, { jsPDF } from 'jspdf';
+// import { jsPDF } from 'jspdf';
 
-import { I_agregarCandidato,candidatos,R_Candidatos,visita } from 'src/app/interfaces/candidatos';
+import { I_agregarCandidato,candidatos,R_Candidatos,visita, UpdateStatus } from 'src/app/interfaces/candidatos';
 import { S_apoyos } from 'src/app/servicios/apoyos.service';
 import { S_extras } from 'src/app/servicios/extras.service';
 import { S_cadidatos } from 'src/app/servicios/cadidatos.service';
@@ -18,7 +20,7 @@ import { S_auth } from 'src/app/servicios/auth.service';
 export class ListaapoyosComponent implements OnInit{
 
   loggedInUser: R_usuarios | null = null;
-  lista_candidatos: visita[] = []
+  lista_candidatos: candidatos[] = []
   apoyos_lista: string[] = [];
   apoyos_estatus: string[] = [];
   filtro: string = '';
@@ -48,8 +50,12 @@ export class ListaapoyosComponent implements OnInit{
   }
   ngOnInit(){
 
-    this.API_candidato.GetVisitas().subscribe((r)=>{
-      this.lista_candidatos = r.visitas;
+    // this.API_candidato.GetVisitas().subscribe((r)=>{
+    //   this.lista_candidatos = r.visitas;
+    // });
+    this.API_candidato.GetCandidatos().subscribe(r =>{
+      this.lista_candidatos = r.candidatos;
+      // console.log(r.candidatos);
     });
     this.API_apoyo.getApoyos().subscribe((r)=>{this.apoyos_lista=r.apoyo});
     this.API_apoyo.getApoyosStatus().subscribe((r)=>{this.apoyos_estatus=r.apoyo_estatus});
@@ -90,21 +96,33 @@ export class ListaapoyosComponent implements OnInit{
   viewSupportsList(){
     this.router.navigate(['/listaApoyos']);
   }
+  updateStatus(id_candidato:number, index:number){
+    // console.log(id_candidato + ' ->'+this.lista_candidatos[index].id_estatus);
+    const new_status:UpdateStatus={
+      id_status_apoyo:this.lista_candidatos[index].id_estatus
+    }
+    this.API_candidato.UpdateCandidatoStatus(new_status,id_candidato ).subscribe((r)=>{
+      console.log(r);
+    });
+
+  }
 
   exportarPDF(): void {
     // Configuración básica del documento PDF
-    const pdf = new jsPDF('p', 'pt');
-    const options = {
-      theme: 'striped',
-      styles: {
-        font: 'helvetica',
-        overflow: 'linebreak',
-      },
-    };
+    // const pdf = new jsPDF('p', 'pt');
 
-    const content = document.getElementById('tablaExportar');
-    pdf.autoTable(content, options);
-    pdf.save('lista_candidatos.pdf');
+    // const options = {
+    //   theme: 'striped',
+    //   styles: {
+    //     font: 'helvetica',
+    //     overflow: 'linebreak',
+    //   },
+    // };
+
+    // const content = document.getElementById('tablaExportar');
+    // pdf.autoTable(content, options);
+    // // pdf.text("Hello world!", 10, 10);
+    // pdf.save('lista_candidatos.pdf');
   }
 }
 

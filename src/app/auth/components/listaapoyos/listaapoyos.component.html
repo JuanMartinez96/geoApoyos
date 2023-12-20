@@ -84,7 +84,7 @@
 
       <tbody class="scroll">
 
-        <tr *ngFor="let item of lista_candidatos | filtro: filtro ">
+        <!-- <tr *ngFor="let item of lista_candidatos | filtro: filtro ">
           <td>{{item.nombre}}</td>
           <td>
             <div *ngIf="item.estatus_apoyo == 1" class="bg-warning icon_color"></div>
@@ -118,6 +118,46 @@
 
             <select  class="p-2 w-50"[(ngModel)]="item.catalogos">
               <option [value]="ap" *ngFor="let ap of apoyos_estatus, let i = index">{{ap}}</option>
+            </select>
+          </td>
+
+        </tr> -->
+
+        <tr *ngFor="let item of lista_candidatos | filtro: filtro, let index = index ">
+          <td>{{item.nombre}}</td>
+          <td>
+            <div *ngIf="item.id_estatus == 1" class="bg-warning icon_color"></div>
+            <div *ngIf="item.id_estatus == 2" class="bg-success icon_color"></div>
+            <div *ngIf="item.id_estatus == 3" class="bg-danger icon_color"></div>
+            {{apoyos_estatus[item.id_estatus-1]}}
+          </td>
+          <td>{{item.id_estatus==1 ?'Sí':'No'}}</td>
+          <td>
+            <button class="btn btn-light mx-1 px-1">
+              <i *ngIf="item.id_estatus == 3" class="bi  bi-dash-circle-fill text-success"></i>
+              <i *ngIf="item.id_estatus == 2" class="bi  bi-dash-circle-fill text-success"></i>
+              <i *ngIf="item.id_estatus == 1" class="bi  bi-dash-circle-fill text-warning"></i>
+            </button>
+            {{item.id_estatus == 1 ?'No Encuestado':'Encuestado'}}
+          </td>
+          <td>{{item.nombre}}</td>
+          <td>{{obtenerFechaFormateada(item.updated_at)}}</td>
+
+          <td>
+            <a href="encuesta/{{item.id_candidato}}">
+              <button class="btn btn-primary">
+                <i class="bi bi-clipboard-data-fill"></i>
+              </button>
+            </a>
+            <button class="btn btn-light mx-1 px-1">
+              <i *ngIf="item.id_estatus == 1" class="bi  bi-dash-circle-fill text-warning"></i>
+              <i *ngIf="item.id_estatus == 2" class="bi bi-check-lg text-success"></i>
+              <i *ngIf="item.id_estatus == 3" class="bi bi-x-circle-fill text-danger"></i>
+            </button>
+
+
+            <select  class="p-2 w-50"[(ngModel)]="item.id_estatus" (change)="updateStatus(item.id_candidato, index)">
+              <option [value]="i+1" *ngFor="let ap of apoyos_estatus, let i = index">{{ap}}</option>
             </select>
           </td>
 

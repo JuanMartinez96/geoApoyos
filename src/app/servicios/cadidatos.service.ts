@@ -38,11 +38,12 @@ export class S_cadidatos{
 
 
     UpdateCandidatoStatus(estado:UpdateStatus,id:number): Observable<I_mensaje2>{
-        return this.http.post<I_mensaje2>(`${this.URL}api/candidatos/apoyo/{id}`,estado);
+        return this.http.put<I_mensaje2>(`${this.URL}api/candidatos/apoyo/${id}`,estado);
     }
     UpdateCandidato(nuevos_datos:I_agregarCandidato, id:number): Observable<I_mensaje2>{
-        return this.http.post<I_mensaje2>(`${this.URL}api/candidatos/${id}`,nuevos_datos);
+        return this.http.put<I_mensaje2>(`${this.URL}api/candidatos/${id}`,nuevos_datos);
     }
+
 
 
     updateImage(data: FormData, id: number, que_guardo:string): Observable<any> {
