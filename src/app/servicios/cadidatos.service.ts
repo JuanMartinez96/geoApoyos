@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 
 import { I_mensaje,I_mensaje2 } from '../interfaces/mensaje';
-import { R_Candidatos,R_CandidatoVisita, I_agregarCandidato ,I_agregarVisita,UpdateStatus, visitas} from '../interfaces/candidatos';
+import { R_Candidatos,R_CandidatoVisita, I_agregarCandidato ,I_agregarVisita,UpdateStatus, visitas, I_visita} from '../interfaces/candidatos';
 
 @Injectable({providedIn: 'root',})
 

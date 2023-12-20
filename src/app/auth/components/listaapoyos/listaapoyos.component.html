@@ -4,31 +4,63 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <!-- ICONS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-  
+
 </head>
 <nav class="navbar">
   <div class="left-section">
     <img src="/assets/navBarFrame.png" alt="Logo">
   </div>
-  <div class="right-section">
+  <div class="right-section" >
     <div class="user-info">
-      <img src="/assets/user-photo.jpg" alt="User Photo" class="user-photo">
+      <img src="/assets/usuarioNavBar.png" alt="User Photo" class="user-photo">
       <div class="user-details">
-        <p class="user-name">Nombre del Usuario</p>
-        <p class="user-permission">Permiso del Usuario</p>
+        <p class="user-name"></p>
+        <p class="user-permission"></p>
       </div>
     </div>
-    <img src="/assets/salir.png" alt="Cerrar Sesión" class="icon">
-    <img src="/assets/menu.png" alt="Menú" (click)="toggleMenu()">
+    <img src="/assets/salir.png" (click)="logout()" alt="Cerrar Sesión" class="icon">
+    <div class="menu-btn" (click)="toggleMenu()">
+      <img src="/assets/menu.png" alt="Menú">
+    </div>
   </div>
 </nav>
+
+<div class="background-login" [class.active-menu]="showMenu">
+  <div class="menu-overlay" *ngIf="showMenu" (click)="toggleMenu()">
+    <div class="menu-content">
+      <div>
+        <img src="/assets/frameMenu.png"  alt="Logo Geo Apoyos" class="logo">
+      </div>
+      <h1> MENÚ </h1>
+      <hr>
+      <ul>
+        <li *ngFor="let item of menuItems">
+          <a [routerLink]="item.link">
+            <div class="card-container">
+              <div class="card rectangle-card" [style.background-color]="item.backgroundColor">
+                <img [src]="item.icon" alt="Icon" class="book-icon">
+              </div>
+              <div class="card text-card">
+                <span>{{ item.label }}</span>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <div class="logout-container">
+        <img src="/assets/logoutp.png" (click)="logout()" alt="Logout Icon" class="logout-icon">
+        <span>Cerrar Sesión</span>
+      </div>
+    </div>
+  </div>
 
 <div class="p-5 my_background h-100">
 
   <div class="bg-light p-2 text-center h-75">
-    
+
     <h2>LISTADO DE CANDIDATOS PARA APOYO
-      <button class="btn btn-warning text-light px-4 float-end">Exportar a PDF</button>
+      <button class="btn btn-danger text-light px-4 float-end" (click)="exportarPDF()">Exportar a PDF</button>
     </h2>
 
     <h2>
@@ -49,7 +81,7 @@
         </tr>
       </thead>
 
-      
+
       <tbody class="scroll">
 
         <tr *ngFor="let item of lista_candidatos | filtro: filtro ">
@@ -70,7 +102,7 @@
           </td>
           <td>{{item.nombre_usuario}}</td>
           <td>{{obtenerFechaFormateada(item.fecha_visita)}}</td>
-          
+
           <td>
             <a href="encuesta/{{item.id_visita}}">
               <button class="btn btn-primary">
@@ -82,13 +114,13 @@
               <i *ngIf="item.catalogos == 'autorizado'" class="bi bi-check-lg text-success"></i>
               <i *ngIf="item.catalogos == 'rechazado'" class="bi bi-x-circle-fill text-danger"></i>
             </button>
-            
-            
+
+
             <select  class="p-2 w-50"[(ngModel)]="item.catalogos">
               <option [value]="ap" *ngFor="let ap of apoyos_estatus, let i = index">{{ap}}</option>
             </select>
           </td>
-          
+
         </tr>
 
       </tbody>

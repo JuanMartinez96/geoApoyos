@@ -33,7 +33,7 @@ const routes: Routes = [
     component:ListaapoyosComponent
   },
   {
-    path:'lista_apoyos',
+    path:'listaApoyos',
     component:ListaapoyosComponent
   },
   {

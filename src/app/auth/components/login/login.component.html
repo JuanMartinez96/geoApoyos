@@ -36,10 +36,7 @@
           formControlName="password"
           >
           <span *ngIf="myForm.controls['password'].getError('required') && myForm.controls['password'].touched">
-            Este campo es requerido
-          </span>
-          <span *ngIf="myForm.controls['password'].getError('minlength') && myForm.controls['password'].touched">
-            Este campo necesita un correo existente
+            La contrase;a es incorrecta
           </span>
         </label>
         <h3 class="forgot-password">¿Olvidaste tu contraseña?</h3>

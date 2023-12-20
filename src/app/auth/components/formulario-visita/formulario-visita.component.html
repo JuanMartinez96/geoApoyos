@@ -2,15 +2,15 @@
   <div class="left-section">
     <img src="/assets/navBarFrame.png" alt="Logo">
   </div>
-  <div class="right-section">
+  <div class="right-section" >
     <div class="user-info">
-      <img src="/assets/.jpg" alt="User Photo" class="user-photo">
+      <img src="/assets/usuarioNavBar.png" alt="User Photo" class="user-photo">
       <div class="user-details">
-        <p class="user-name">Cesar rincon</p>
-        <p class="user-permission">Administrador</p>
+        <p class="user-name"></p>
+        <p class="user-permission"></p>
       </div>
     </div>
-    <img src="/assets/salir.png" alt="Cerrar Sesión" class="icon">
+    <img src="/assets/salir.png" (click)="logout()" alt="Cerrar Sesión" class="icon">
     <div class="menu-btn" (click)="toggleMenu()">
       <img src="/assets/menu.png" alt="Menú">
     </div>
@@ -21,7 +21,7 @@
   <div class="menu-overlay" *ngIf="showMenu" (click)="toggleMenu()">
     <div class="menu-content">
       <div>
-        <img src="/assets/frameMenu.png" alt="Logo Geo Apoyos" class="logo">
+        <img src="/assets/frameMenu.png"  alt="Logo Geo Apoyos" class="logo">
       </div>
       <h1> MENÚ </h1>
       <hr>
@@ -41,7 +41,7 @@
       </ul>
 
       <div class="logout-container">
-        <img src="/assets/logoutp.png" alt="Logout Icon" class="logout-icon">
+        <img src="/assets/logoutp.png" (click)="logout()" alt="Logout Icon" class="logout-icon">
         <span>Cerrar Sesión</span>
       </div>
     </div>
@@ -51,25 +51,31 @@
 
     <div class="card-formulario">
         <h2>CONFIRMACION DE VISITA</h2>
-      <form>
+      <form (submit)="ssaveInfo(formulario)" #formulario="ngForm">
         <div class="formulario-visitas">
           <label for="visitado">Visitado
-            <input type="text" id="visitado" name="visitado">
+            <select id="visitado" name="visitado" [(ngModel)]="selectedVisitado">
+              <option value="visitado">Visitado</option>
+              <option value="no-visitado">No Visitado</option>
+            </select>
           </label>
           <br>
           <label for="estatus">Estatus encuesta
-            <input type="text" id="estatus" name="estatus" placeholder="Estatus">
+            <select id="encuesta" name="visitado" [(ngModel)]="selectedEncuesta">
+              <option value="EncuestaRealizada">Encuesa Realziada</option>
+              <option value="EncuestaNor">Encuesa no realziada</option>
+            </select>
           </label>
           <br>
           <label for="razon">Razon:
-            <input type="text" id="razon" name="razon">
+            <input type="text" id="razon" name="razon" #inputRazon>
           </label>
         </div>
         <div class="boton-visitas">
           <button type="submit">Aceptar</button>
         </div>
         <div class="boton-lista">
-          <button type="submit">Ver lista de apoyos</button>
+          <button type="submit" (click)="viewSupportsList()">Ver lista de apoyos</button>
         </div>
       </form>
     </div>

@@ -38,6 +38,7 @@
 .user-name,
 .user-permission {
   margin: 0;
+  margin-right: 15px;
 }
 
 .right-section {
@@ -47,6 +48,7 @@
 
 .icon {
   height: 20px;
+  cursor: pointer;
 }
 
 
@@ -170,6 +172,7 @@ h1 {
 .logout-icon {
   width: 30px;
   margin-right: 10px;
+  cursor: pointer;
 }
 
 .logout-container span {
